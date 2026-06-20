@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>三枚神託タロット β｜カテゴリ専用文章版</title>
+  <title>三枚神託タロット｜78枚対応・JPG画像版</title>
   <style>
     :root {
       --bg0: #05030c;
@@ -17,6 +17,7 @@
       --muted: #cfc5e8;
       --card-w: clamp(92px, 27vw, 176px);
       --card-h: calc(var(--card-w) * 1.61);
+      --card-back-image: url("card%20back.jpg");
     }
 
     * { box-sizing: border-box; }
@@ -90,11 +91,18 @@
       position: absolute; left: 50%; top: 50%; width: clamp(62px, 12vw, 92px); height: calc(clamp(62px, 12vw, 92px) * 1.61);
       margin-left: calc(clamp(62px, 12vw, 92px) / -2); margin-top: calc(clamp(62px, 12vw, 92px) * -0.805);
       border-radius: 10px; border: 1px solid rgba(217,180,95,.78);
-      background: radial-gradient(circle at 50% 32%, rgba(255,241,185,.18), transparent 23%), radial-gradient(circle at 50% 50%, rgba(143,92,255,.18), transparent 42%), linear-gradient(145deg, #1b1034, #05030c 66%, #2a0d1f);
+      background:
+        var(--card-back-image),
+        radial-gradient(circle at 50% 32%, rgba(255,241,185,.18), transparent 23%),
+        radial-gradient(circle at 50% 50%, rgba(143,92,255,.18), transparent 42%),
+        linear-gradient(145deg, #1b1034, #05030c 66%, #2a0d1f);
+      background-size: cover, auto, auto, auto;
+      background-position: center, center, center, center;
+      background-repeat: no-repeat;
       box-shadow: 0 12px 28px rgba(0,0,0,.55), 0 0 18px rgba(217,180,95,.12);
       transform-style: preserve-3d; transition: transform .95s cubic-bezier(.16, 1, .3, 1), opacity .7s ease, filter .7s ease; will-change: transform, opacity;
     }
-    .deck-card::before, .drawn-card::before { content: "✦"; position: absolute; inset: 8px; display: grid; place-items: center; border: 1px solid rgba(217,180,95,.32); border-radius: 8px; color: rgba(255,241,185,.8); font-size: 1.4rem; text-shadow: 0 0 18px rgba(217,180,95,.6); }
+    .deck-card::before, .drawn-card::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(217,180,95,.32); border-radius: 8px; box-shadow: inset 0 0 18px rgba(217,180,95,.08); pointer-events: none; }
     .deck-card.swirl { animation: circleShuffle 1.45s cubic-bezier(.45, .03, .32, .98) infinite; animation-delay: var(--delay); }
     @keyframes circleShuffle {
       0% { transform: rotate(var(--angle)) translateX(0) rotate(0deg) scale(1.02); }
@@ -200,7 +208,7 @@
         </div>
       </div>
     </section>
-    <p class="note">画像ファイルが同じフォルダにある場合は自動表示します。未配置のカードは仮カード表示になります。今回の版では、カード表示時の反転・めくり演出を削除し、結果表示時にそのまま表面カードを表示します。</p>
+    <p class="note">カード画像はすべてJPG想定です。HTMLと同じフォルダに各カード画像を置き、カード裏面は「card back.jpg」という名前で配置してください。未配置のカードは仮カード表示になります。</p>
     <p class="note" id="image-debug" style="display:none; color:#ffd88c;"></p>
   </main>
 
@@ -3970,6 +3978,11 @@
     const spreadEl = document.getElementById('spread');
     const oracleText = document.getElementById('oracle-text');
     const imageDebug = document.getElementById('image-debug');
+    const CARD_BACK_FILE = 'card back.jpg';
+
+    // GitHub Pages上ではスペースが自動的に %20 として扱われるため、
+    // CSSにはエンコード済みURLを渡しておく。
+    document.documentElement.style.setProperty('--card-back-image', 'url("' + encodeURI(CARD_BACK_FILE) + '")');
 
     let selected = [];
     let visualCards = [];
@@ -4220,7 +4233,7 @@
           imageBox.classList.add('no-image');
           if (imageDebug) {
             imageDebug.style.display = 'block';
-            imageDebug.innerHTML = '<span class="debug-pill">画像が見つからないカードがあります。例：' + escapeHTML((tried[0] || '愚者.jpg')) + ' を同じフォルダに置いてください。</span>';
+            imageDebug.innerHTML = '<span class="debug-pill">画像が見つからないカードがあります。例：' + escapeHTML((tried[0] || '愚者.jpg')) + ' をHTMLと同じフォルダに置いてください。裏面は card back.jpg です。</span>';
           }
           return;
         }
@@ -4238,7 +4251,7 @@
 
     function buildImageCandidates(files) {
       const sourceFiles = Array.isArray(files) ? files : [files];
-      const exts = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png', '.PNG', '.webp', '.WEBP'];
+      const exts = ['.jpg', '.jpeg', '.JPG', '.JPEG'];
       const candidates = [];
       const pushUnique = function(value) {
         if (!value) return;
