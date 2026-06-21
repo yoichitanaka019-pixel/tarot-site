@@ -164,6 +164,238 @@
       .deck-card, .drawn-card { transition-duration: .55s; }
       .deck-card.swirl { animation-duration: .95s; }
     }
+
+
+    /* ===== Brush-up v1: 上質演出・音楽準備 ===== */
+    :root {
+      --card-back-image: url("card%20back.jpg");
+      --luxury-shadow: 0 32px 90px rgba(0,0,0,.52), 0 0 60px rgba(217,180,95,.12);
+    }
+
+    .hero { position: relative; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 16%;
+      width: min(680px, 88vw); height: min(680px, 88vw);
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,241,185,.11), rgba(143,92,255,.08) 36%, transparent 66%);
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: -1;
+      animation: haloBreath 7s ease-in-out infinite;
+    }
+    @keyframes haloBreath {
+      0%, 100% { opacity: .55; transform: translateX(-50%) scale(.96); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.04); }
+    }
+    h1 {
+      background: linear-gradient(180deg, #fff7cf 0%, #d9b45f 54%, #8f6d25 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .lead {
+      padding: 0 clamp(8px, 2vw, 22px);
+      text-shadow: 0 10px 28px rgba(0,0,0,.45);
+    }
+
+    .audio-toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px auto 0;
+      color: rgba(239,232,255,.78);
+      font-size: .83rem;
+    }
+    .sound-toggle {
+      width: auto;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--gold2);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(217,180,95,.36);
+      box-shadow: 0 10px 28px rgba(0,0,0,.24), inset 0 0 22px rgba(217,180,95,.05);
+      letter-spacing: .08em;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+    }
+    .sound-toggle:hover { transform: translateY(-1px); background: rgba(217,180,95,.11); border-color: rgba(255,241,185,.45); }
+    .sound-note { opacity: .78; }
+
+    .ritual-panel {
+      box-shadow: var(--luxury-shadow), inset 0 0 80px rgba(255,241,185,.035);
+    }
+    .ritual-panel::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 33px;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent, rgba(255,241,185,.13), transparent) 0 0 / 220% 1px no-repeat,
+        linear-gradient(180deg, transparent, rgba(255,241,185,.10), transparent) 100% 0 / 1px 220% no-repeat;
+      animation: panelGlint 8s linear infinite;
+      opacity: .75;
+    }
+    @keyframes panelGlint {
+      0% { background-position: -120% 0, 100% -120%; }
+      100% { background-position: 120% 0, 100% 120%; }
+    }
+
+    .deck-stage::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      width: min(520px, 84vw); height: min(520px, 84vw);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(217,180,95,.13), transparent 62%),
+        conic-gradient(from 0deg, transparent, rgba(255,241,185,.16), transparent, rgba(143,92,255,.13), transparent);
+      filter: blur(.2px);
+      opacity: .55;
+      animation: altarSpin 24s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes altarSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .deck-card, .drawn-card {
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.08), transparent 25%, rgba(255,241,185,.10) 51%, transparent 73%),
+        var(--card-back-image) center / cover no-repeat,
+        radial-gradient(circle at 50% 32%, rgba(255,241,185,.18), transparent 23%),
+        linear-gradient(145deg, #1b1034, #05030c 66%, #2a0d1f);
+      border: 1px solid rgba(255,241,185,.55);
+      overflow: hidden;
+      box-shadow: 0 16px 36px rgba(0,0,0,.62), 0 0 24px rgba(217,180,95,.18);
+    }
+    .deck-card::before, .drawn-card::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      display: block;
+      border: 1px solid rgba(255,241,185,.18);
+      border-radius: 8px;
+      background: radial-gradient(circle at 50% 28%, rgba(255,241,185,.08), transparent 38%);
+      box-shadow: inset 0 0 18px rgba(0,0,0,.18);
+    }
+    .deck-card::after, .drawn-card::after {
+      content: "";
+      position: absolute;
+      inset: -45% -70%;
+      background: linear-gradient(120deg, transparent 42%, rgba(255,255,255,.22), transparent 58%);
+      transform: translateX(-46%) rotate(10deg);
+      opacity: .28;
+      animation: cardShine 5.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes cardShine {
+      0%, 52%, 100% { transform: translateX(-46%) rotate(10deg); opacity: 0; }
+      60% { opacity: .38; }
+      76% { transform: translateX(46%) rotate(10deg); opacity: 0; }
+    }
+    .deck-card.swirl {
+      box-shadow: 0 18px 40px rgba(0,0,0,.56), 0 0 34px rgba(217,180,95,.28), 0 0 56px rgba(143,92,255,.13);
+    }
+    .is-running .deck-stage::before { animation-duration: 8s; opacity: .86; }
+
+    .drawn-card.arrive {
+      animation: chosenPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes chosenPulse {
+      0%, 100% { box-shadow: 0 20px 50px rgba(0,0,0,.62), 0 0 24px rgba(217,180,95,.24); }
+      50% { box-shadow: 0 28px 70px rgba(0,0,0,.72), 0 0 48px rgba(255,241,185,.36), 0 0 72px rgba(143,92,255,.18); }
+    }
+
+    .result-area { position: relative; }
+    .result-area::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 4%;
+      width: min(760px, 94vw); height: 280px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(255,241,185,.12), rgba(143,92,255,.08) 40%, transparent 72%);
+      filter: blur(18px);
+      pointer-events: none;
+      z-index: -1;
+    }
+    .reading-card {
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(22px) scale(.96);
+      animation: cardRise .78s cubic-bezier(.16, 1, .3, 1) forwards;
+      animation-delay: var(--reveal-delay, 0s);
+    }
+    .reading-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 0 34%, rgba(255,241,185,.12) 45%, transparent 56% 100%);
+      transform: translateX(-120%);
+      animation: readingGlint 2.4s ease forwards;
+      animation-delay: calc(var(--reveal-delay, 0s) + .32s);
+      pointer-events: none;
+    }
+    @keyframes cardRise {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes readingGlint {
+      to { transform: translateX(120%); }
+    }
+    .card-image-box {
+      transition: transform .45s ease, box-shadow .45s ease;
+    }
+    .reading-card:hover .card-image-box {
+      transform: translateY(-3px);
+      box-shadow: 0 0 42px rgba(217,180,95,.26), 0 18px 38px rgba(0,0,0,.5);
+    }
+    .card-image-box::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 18%, rgba(255,255,255,.10), transparent 34%), linear-gradient(180deg, transparent 72%, rgba(0,0,0,.18));
+      pointer-events: none;
+    }
+    .oracle-box {
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: oracleRise .86s cubic-bezier(.16, 1, .3, 1) .62s forwards;
+    }
+    .oracle-box::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 0;
+      width: 72%; height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(255,241,185,.8), transparent);
+      box-shadow: 0 0 26px rgba(255,241,185,.48);
+    }
+    @keyframes oracleRise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .oracle-text {
+      text-shadow: 0 8px 24px rgba(0,0,0,.42);
+    }
+
+    @media (max-width: 700px) {
+      .audio-toolbar { gap: 8px; margin-top: 18px; }
+      .sound-note { display: none; }
+      .deck-stage::before { width: 340px; height: 340px; }
+      .reading-card:hover .card-image-box { transform: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -172,6 +404,9 @@
       <div class="eyebrow">THREE CARD ORACLE ・ CATEGORY TEXT EDITION</div>
       <h1>三枚神託<br>タロット</h1>
       <p class="lead">大アルカナと小アルカナを合わせた78枚から、三つの山に分けた運命の一枚ずつを引きます。選んだ相談内容に合わせて、カードごとの専用文章を表示します。</p>
+      <div class="audio-toolbar">
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">音楽：ON</button>
+      </div>
     </section>
 
     <section class="ritual-panel" id="ritual-panel">
@@ -208,9 +443,11 @@
         </div>
       </div>
     </section>
-    <p class="note">カード画像はすべてJPG想定です。HTMLと同じフォルダに各カード画像を置き、カード裏面は「card back.jpg」という名前で配置してください。未配置のカードは仮カード表示になります。</p>
-    <p class="note" id="image-debug" style="display:none; color:#ffd88c;"></p>
   </main>
+
+  <audio id="bgm-top" loop preload="auto" src="music/top.mp3"></audio>
+  <audio id="bgm-shuffle" loop preload="auto" src="music/shuffle.mp3"></audio>
+  <audio id="bgm-result" loop preload="auto" src="music/result.mp3"></audio>
 
   <script>
     const deck = [
@@ -3918,6 +4155,12 @@
     const spreadEl = document.getElementById('spread');
     const oracleText = document.getElementById('oracle-text');
     const imageDebug = document.getElementById('image-debug');
+    const soundToggle = document.getElementById('sound-toggle');
+    const bgm = {
+      top: document.getElementById('bgm-top'),
+      shuffle: document.getElementById('bgm-shuffle'),
+      result: document.getElementById('bgm-result')
+    };
     const CARD_BACK_FILE = 'card back.jpg';
 
     // GitHub Pages上ではスペースが自動的に %20 として扱われるため、
@@ -3931,6 +4174,9 @@
     let ritualTimers = [];
     let lastStartAt = 0;
     let startQueued = false;
+    let soundMuted = false;
+    let currentBgm = 'top';
+    let audioReady = false;
 
     // Android / iPhone / PC のどれでも、ボタンから直接ここへ入る安全な起動口。
     // 一部のスマホでは click が発火しない、または touch と click が二重発火するため、ここで吸収する。
@@ -3971,6 +4217,7 @@
       if (initialized) return;
       initialized = true;
       createDeckVisual();
+      setupAudio();
 
       const startHandler = function(event) {
         return window.startTarotRitualSafe(event);
@@ -3992,6 +4239,70 @@
       window.addEventListener('load', initTarotApp, { once: true });
     } else {
       initTarotApp();
+    }
+
+
+    function setupAudio() {
+      Object.values(bgm).forEach(audio => {
+        if (!audio) return;
+        audio.volume = .32;
+        audio.addEventListener('error', function() {
+          // BGMファイル未配置でもサイト自体は通常動作させる。
+        }, false);
+      });
+      if (bgm.top) bgm.top.volume = .24;
+      if (bgm.shuffle) bgm.shuffle.volume = .34;
+      if (bgm.result) bgm.result.volume = .30;
+
+      if (soundToggle) {
+        soundToggle.addEventListener('click', function(event) {
+          event.preventDefault();
+          soundMuted = !soundMuted;
+          updateSoundButton();
+          if (soundMuted) {
+            stopAllBGM();
+          } else {
+            audioReady = true;
+            switchBGM(currentBgm, true);
+          }
+        }, false);
+      }
+      updateSoundButton();
+    }
+
+    function updateSoundButton() {
+      if (!soundToggle) return;
+      soundToggle.textContent = soundMuted ? '音楽：OFF' : '音楽：ON';
+      soundToggle.setAttribute('aria-pressed', soundMuted ? 'true' : 'false');
+    }
+
+    function stopAllBGM() {
+      Object.values(bgm).forEach(audio => {
+        if (!audio) return;
+        try { audio.pause(); } catch (e) {}
+      });
+    }
+
+    function switchBGM(name, forcePlay) {
+      currentBgm = name;
+      if (soundMuted) return;
+      if (forcePlay) audioReady = true;
+      Object.entries(bgm).forEach(([key, audio]) => {
+        if (!audio) return;
+        if (key !== name) {
+          try { audio.pause(); } catch (e) {}
+          return;
+        }
+        try {
+          audio.currentTime = audio.currentTime || 0;
+          const playPromise = audio.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function() {
+              // ユーザー操作前の自動再生制限、またはBGM未配置の場合は無音で続行。
+            });
+          }
+        } catch (e) {}
+      });
     }
 
     function createDeckVisual() {
@@ -4020,6 +4331,7 @@
     function startRitual() {
       if (ritualRunning) return;
       ritualRunning = true;
+      switchBGM('shuffle', true);
       clearRitualTimers();
       document.body.classList.add('is-running');
       startBtn.disabled = true;
@@ -4092,12 +4404,13 @@
     }
 
     function showResult() {
+      switchBGM('result', true);
       title.textContent = 'あなたの問いに対する三枚の物語です。';
       stage.querySelectorAll('.drawn-card').forEach(el => el.remove());
       spreadEl.innerHTML = '';
       const category = categorySelect.value;
       selected.forEach((entry, index) => {
-        spreadEl.appendChild(createReadingCard(entry, slots[index], category));
+        spreadEl.appendChild(createReadingCard(entry, slots[index], category, index));
       });
       oracleText.textContent = makeOracle(selected, category);
       resultArea.style.display = 'block';
@@ -4112,6 +4425,7 @@
 
     function resetRitual() {
       clearRitualTimers();
+      switchBGM('top', true);
       selected = [];
       ritualRunning = false;
       startBtn.disabled = false;
@@ -4138,10 +4452,11 @@
       return copy.slice(0, 3).map(card => ({ card, reversed: Math.random() < 0.5 }));
     }
 
-    function createReadingCard(entry, slot, category) {
+    function createReadingCard(entry, slot, category, index) {
       const { card, reversed } = entry;
       const wrapper = document.createElement('article');
       wrapper.className = 'reading-card';
+      wrapper.style.setProperty('--reveal-delay', ((index || 0) * .16) + 's');
       const imageBox = document.createElement('div');
       imageBox.className = `card-image-box${reversed ? ' reversed' : ''}`;
       const img = document.createElement('img');
@@ -4249,35 +4564,233 @@
     function orientationKey(entry) { return entry.reversed ? 'reversed' : 'upright'; }
 
     function makeCardMessage(entry, slot, category) {
-      const base = entry.card.readings[category][orientationKey(entry)];
-      if (slot.label === '現在') return `現在の位置：${base}`;
-      if (slot.label === '課題') return `課題の位置：${base}`;
-      return `助言の位置：${base}`;
+      const parts = getCardMeaning(entry, category);
+      const positionIntro = slot.label === '現在'
+        ? '今の流れ'
+        : slot.label === '課題'
+          ? '流れを止めやすい点'
+          : '次に取る姿勢';
+      return `${slot.label}の位置：${cardLabel(entry)}は、${categoryLens(category).theme}における「${activeWords(entry)}」を示します。${positionIntro}としては、${parts[slot.label === '助言' ? 'advice' : slot.label === '課題' ? 'obstacle' : 'psychology']}。`;
     }
 
     function makeOracle(entries, category) {
       const [a, b, c] = entries;
-      const msgA = a.card.readings[category][orientationKey(a)];
-      const msgB = b.card.readings[category][orientationKey(b)];
-      const msgC = c.card.readings[category][orientationKey(c)];
-      const arcanaCount = entries.filter(e => e.card.arcana === '大アルカナ').length;
-      const power = arcanaCount >= 2
-        ? '大アルカナが多いため、今回の結果は一時的な気分よりも、少し大きな転機や方向修正を示しています。'
-        : '小アルカナが中心のため、今回の結果は日々の行動、言葉、選択を少し変えることで現実が動きやすい配置です。';
-      return `【${category}の総合リーディング】
-${categorySummaries[category]}
+      const relation = makeRelationSentence(a, b, category);
+      const advice = makeAdviceSentence(a, b, c, category);
+      const tone = makeToneSentence(entries, category);
+      rememberOraclePattern(entries, category);
+      return `今回の三枚は、
+現在：${cardLabel(a)}
+課題：${cardLabel(b)}
+助言：${cardLabel(c)}
+という流れで並びました。
 
-一枚目の「${a.card.name}」は現在を示します。
-${msgA}
-
-二枚目の「${b.card.name}」は課題を示します。
-${msgB}
-
-三枚目の「${c.card.name}」は助言を示します。
-${msgC}
-
-${power}`;
+${relation}
+${advice}
+${tone}`;
     }
+
+    function cardLabel(entry) {
+      return `「${entry.card.name}」${entry.reversed ? '逆位置' : '正位置'}`;
+    }
+
+    function activeWordList(entry) {
+      const words = entry.reversed ? entry.card.reversed : entry.card.keywords;
+      return Array.isArray(words) && words.length ? words : ['変化', '選択'];
+    }
+
+    function activeWords(entry) {
+      return activeWordList(entry).slice(0, 2).join('・');
+    }
+
+    function firstWord(entry) {
+      return activeWordList(entry)[0] || '変化';
+    }
+
+    function secondWord(entry) {
+      return activeWordList(entry)[1] || firstWord(entry);
+    }
+
+    function categoryLens(category) {
+      return {
+        '恋愛': {
+          theme: '心の距離と本音',
+          caution: '相手の反応だけで答えを決めないこと',
+          action: '安心できる距離を保ちながら、短い本音を一つだけ伝えること',
+          avoid: '試す言葉や駆け引き'
+        },
+        '仕事': {
+          theme: '成果、評価、次の一手',
+          caution: '評価を待つだけで止まらないこと',
+          action: '今日中に形にできる成果物を一つ決めること',
+          avoid: '曖昧な努力の積み上げ'
+        },
+        '健康': {
+          theme: '心身の負荷と回復',
+          caution: '我慢を通常運転にしないこと',
+          action: '睡眠、食事、休憩のどれか一つを軽く整えること',
+          avoid: '気合いだけで押し切ること'
+        },
+        '家族': {
+          theme: '近い関係の安心感',
+          caution: '正しさだけを先に出さないこと',
+          action: '結論より先に、相手の状況を一つ確認すること',
+          avoid: '決めつけたまま話すこと'
+        },
+        '人間関係': {
+          theme: '信頼と境界線',
+          caution: '全員に合わせようとしすぎないこと',
+          action: '返事を急がず、関わる相手を丁寧に選ぶこと',
+          avoid: '無理な即答'
+        },
+        'ギャンブル': {
+          theme: '流れ、欲、引き際',
+          caution: '取り返そうとして熱くならないこと',
+          action: '始める前に金額、時間、撤退条件を決めること',
+          avoid: 'その場の勢い'
+        }
+      }[category] || {
+        theme: '今の問い',
+        caution: '答えを急ぎすぎないこと',
+        action: '今日できる小さな一歩に落とすこと',
+        avoid: '曖昧なまま進むこと'
+      };
+    }
+
+    function suitTone(entry) {
+      if (entry.card.suit === 'ワンド') {
+        return { drive: '動きたい衝動', method: '小さく動かす', risk: '勢いが焦りに変わること', anchor: '熱量' };
+      }
+      if (entry.card.suit === 'カップ') {
+        return { drive: '感情を受け取りたい心', method: '気持ちを言葉にする', risk: '期待や寂しさに流されること', anchor: '感情' };
+      }
+      if (entry.card.suit === 'ソード') {
+        return { drive: 'はっきり判断したい意識', method: '言葉を短く整える', risk: '考えすぎて鋭くなりすぎること', anchor: '判断' };
+      }
+      if (entry.card.suit === 'ペンタクル') {
+        return { drive: '現実を安定させたい感覚', method: '予定や条件を整える', risk: '重さや停滞に飲まれること', anchor: '現実感' };
+      }
+      return { drive: '深い流れを読み取りたい心', method: '態度を一段変える', risk: '出来事の意味を見落とすこと', anchor: '価値観' };
+    }
+
+    function getCardMeaning(entry, category) {
+      const lens = categoryLens(category);
+      const tone = suitTone(entry);
+      const w1 = firstWord(entry);
+      const w2 = secondWord(entry);
+      if (entry.reversed) {
+        return {
+          psychology: `${w1}や${w2}に引っかかり、${tone.drive}が素直に出にくい状態です`,
+          action: `${tone.method}前に、${lens.avoid}を一度止めることです`,
+          obstacle: `${w1}が強まりすぎ、${lens.theme}の中で${tone.risk}です`,
+          advice: `${w2}を責める材料にせず、${lens.action}が助けになります`
+        };
+      }
+      return {
+        psychology: `${w1}が前に出て、${tone.drive}を自然に扱いやすい状態です`,
+        action: `${tone.method}ことで、${w2}を現実の流れに変えられます`,
+        obstacle: `良い流れがある分、${lens.caution}を忘れると空回りします`,
+        advice: `${w1}を大きな決断にしすぎず、${lens.action}が助けになります`
+      };
+    }
+
+    function makeRelationSentence(a, b, category) {
+      const current = getCardMeaning(a, category);
+      const issue = getCardMeaning(b, category);
+      const variants = [
+        () => `現在と課題には、${cardLabel(a)}の「${activeWords(a)}」と、${cardLabel(b)}の「${activeWords(b)}」が並んでいます。今は${current.psychology}。ただし課題側では、${issue.obstacle}。`,
+        () => `現在と課題には、進もうとする力と、そこで引っかかる理由が同時に出ています。${cardLabel(a)}は${current.psychology}を示し、${cardLabel(b)}は${issue.obstacle}を示します。`,
+        () => `現在と課題には、${firstWord(a)}から${firstWord(b)}へ向かう流れがあります。表面上は${current.psychology}が強い一方で、内側では${issue.obstacle}。`,
+        () => `現在と課題には、${cardLabel(a)}の流れをそのまま進めるだけでは越えにくいテーマがあります。鍵になるのは、${cardLabel(b)}が示す「${activeWords(b)}」を避けずに整えることです。`
+      ];
+      return chooseOracleVariant('relation', variants)();
+    }
+
+    function makeAdviceSentence(a, b, c, category) {
+      const advice = getCardMeaning(c, category);
+      const lens = categoryLens(category);
+      const variants = [
+        () => `助言の${cardLabel(c)}は、${advice.advice}。${lens.caution}を意識すると、三枚の流れは無理なくつながります。`,
+        () => `最後に出た${cardLabel(c)}は、答えを急ぐより${advice.action}と告げています。${lens.avoid}を避けるほど、結果は安定します。`,
+        () => `助言としては、${cardLabel(c)}の「${activeWords(c)}」を今日の行動に落とすことです。大きく変えようとせず、${lens.action}。`,
+        () => `${cardLabel(c)}が示す助言は、${advice.advice}。現在と課題を一気に解決しようとせず、まず一つだけ整えてください。`
+      ];
+      return chooseOracleVariant('advice', variants)();
+    }
+
+    function makeToneSentence(entries, category) {
+      const reversedCount = entries.filter(e => e.reversed).length;
+      const majorCount = entries.filter(e => e.card.arcana === '大アルカナ').length;
+      const suits = entries.map(e => e.card.suit).filter(Boolean);
+      const mainSuit = dominantSuit(entries);
+      const variants = [];
+
+      if (mainSuit) {
+        const tone = suitTone(entries.find(e => e.card.suit === mainSuit));
+        variants.push(() => `${mainSuit}の気配が強いため、今回は${tone.anchor}の扱いが鍵です。${tone.method}ことを優先してください。`);
+        variants.push(() => `三枚の中では${mainSuit}の性質が目立ちます。${tone.risk}を避け、${tone.anchor}を小さな行動に変えると流れが整います。`);
+      }
+      if (majorCount >= 2) {
+        variants.push(() => `大アルカナが${majorCount}枚出ているため、これは一時的な気分だけではなく、選び方そのものを見直す合図です。`);
+      } else {
+        variants.push(() => `今回は日常の調整で動かせる配置です。言葉、予定、距離感のどれか一つを整えるだけでも十分です。`);
+      }
+      if (reversedCount >= 2) {
+        variants.push(() => `逆位置が重なっているため、今日は増やすより減らす日です。迷い、期待、負担のうち一つを軽くしてください。`);
+      } else if (reversedCount === 1) {
+        const rev = entries.find(e => e.reversed);
+        variants.push(() => `逆位置は${cardLabel(rev)}だけです。ここを整えれば、全体の流れは大きく崩れません。`);
+      } else {
+        variants.push(() => `三枚とも正位置なので、流れは比較的素直です。疑いすぎず、見えている一歩を選んでください。`);
+      }
+      return chooseOracleVariant('tone', variants)();
+    }
+
+    function dominantSuit(entries) {
+      const counts = {};
+      entries.forEach(e => {
+        if (!e.card.suit) return;
+        counts[e.card.suit] = (counts[e.card.suit] || 0) + 1;
+      });
+      const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      if (!sorted.length) return '';
+      return sorted[0][1] >= 2 ? sorted[0][0] : '';
+    }
+
+    function oraclePatternSignature(entries, category) {
+      return `${category}|${entries.map(e => `${e.card.id}:${e.reversed ? 'R' : 'U'}`).join('|')}`;
+    }
+
+    function chooseOracleVariant(section, variants) {
+      if (!variants.length) return () => '';
+      const historyKey = 'tarot_oracle_variant_history_v6';
+      let history = [];
+      try {
+        history = JSON.parse(localStorage.getItem(historyKey) || '[]');
+        if (!Array.isArray(history)) history = [];
+      } catch (e) { history = []; }
+      const recent = history.filter(item => item && item.section === section).map(item => item.index);
+      let choices = variants.map((_, index) => index).filter(index => !recent.includes(index));
+      if (!choices.length) choices = variants.map((_, index) => index);
+      const index = choices[Math.floor(Math.random() * choices.length)];
+      history.unshift({ section, index, time: Date.now() });
+      history = history.slice(0, 18);
+      try { localStorage.setItem(historyKey, JSON.stringify(history)); } catch (e) {}
+      return variants[index];
+    }
+
+    function rememberOraclePattern(entries, category) {
+      const key = 'tarot_recent_spreads_v6';
+      let history = [];
+      try {
+        history = JSON.parse(localStorage.getItem(key) || '[]');
+        if (!Array.isArray(history)) history = [];
+      } catch (e) { history = []; }
+      history.unshift({ spread: oraclePatternSignature(entries, category), time: Date.now() });
+      history = history.slice(0, 12);
+      try { localStorage.setItem(key, JSON.stringify(history)); } catch (e) {}
+    }
+
 
     function escapeHTML(str) {
       return str.replace(/[&<>'"]/g, (tag) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[tag]));
