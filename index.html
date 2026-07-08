@@ -575,6 +575,114 @@
       }
     }
 
+  
+    /* ===== Brush-up v12: 大アルカナウェア導線 ===== */
+    .shop-link-top {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 17px;
+      border-radius: 999px;
+      color: var(--gold2);
+      text-decoration: none;
+      letter-spacing: .08em;
+      background: linear-gradient(180deg, rgba(255,241,185,.08), rgba(255,255,255,.035));
+      border: 1px solid rgba(217,180,95,.34);
+      box-shadow: 0 10px 28px rgba(0,0,0,.24), inset 0 0 22px rgba(217,180,95,.05);
+      transition: transform .24s ease, background .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+    .shop-link-top:hover {
+      transform: translateY(-1px);
+      background: rgba(217,180,95,.12);
+      border-color: rgba(255,241,185,.48);
+      box-shadow: 0 14px 34px rgba(0,0,0,.28), 0 0 22px rgba(217,180,95,.12);
+    }
+    .merch-cta {
+      margin: clamp(18px, 3vw, 28px) auto 4px;
+      padding: clamp(16px, 3vw, 24px);
+      border-radius: 24px;
+      border: 1px solid rgba(217,180,95,.30);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,241,185,.12), transparent 18rem),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      text-align: center;
+      box-shadow: inset 0 0 36px rgba(217,180,95,.035), 0 14px 44px rgba(0,0,0,.24);
+    }
+    .merch-kicker {
+      margin: 0 0 8px;
+      color: var(--gold2);
+      font-size: .86rem;
+      letter-spacing: .14em;
+    }
+    .merch-title {
+      margin: 0;
+      font-size: clamp(1.1rem, 3.2vw, 1.52rem);
+      color: var(--text);
+      letter-spacing: .06em;
+      line-height: 1.55;
+    }
+    .merch-text {
+      max-width: 620px;
+      margin: 10px auto 16px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: .94rem;
+    }
+    .merch-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      color: #231000;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-decoration: none;
+      background: linear-gradient(135deg, #fff1b9, #d7aa4c 48%, #ffcf6b);
+      box-shadow: 0 12px 30px rgba(217,180,95,.22), inset 0 1px 0 rgba(255,255,255,.65);
+      transition: transform .24s ease, filter .24s ease;
+    }
+    .merch-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+    .merch-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto;
+      max-width: 760px;
+    }
+    .merch-note {
+      margin: 12px 0 0;
+      color: rgba(255, 245, 220, .66);
+      font-size: .82rem;
+      line-height: 1.7;
+    }
+    @media (max-width: 700px) {
+      .shop-link-top {
+        min-height: 40px;
+        font-size: .82rem;
+        padding: 0 14px;
+      }
+      .merch-cta {
+        border-radius: 20px;
+      }
+      .merch-text {
+        font-size: .9rem;
+      }
+      .merch-links {
+        gap: 10px;
+      }
+      .merch-btn {
+        width: 100%;
+        max-width: 340px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -585,6 +693,7 @@
       <p class="lead">大アルカナと小アルカナを合わせた78枚から、三つの山に分けた運命の一枚ずつを引きます。選んだ相談内容に合わせて、三枚のつながりから今の流れをやわらかく読み解きます。</p>
       <div class="audio-toolbar">
         <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">音楽：ON</button>
+        <a class="shop-link-top" href="https://market.up-t.jp/creator/64e3dfa92ddbd" target="_blank" rel="noopener noreferrer">大アルカナウェア</a>
       </div>
     </section>
 
@@ -617,6 +726,13 @@
         <div class="oracle-box" id="oracle-box">
           <h2>三枚の神託</h2>
           <div class="oracle-text" id="oracle-text"></div>
+          <div class="merch-cta" id="merch-cta" aria-label="大アルカナウェア案内" hidden>
+            <p class="merch-kicker" id="merch-kicker">MAJOR ARCANA WEAR</p>
+            <h3 class="merch-title" id="merch-title">今日のカードを、日常のお守りに。</h3>
+            <p class="merch-text" id="merch-text">大アルカナが出た時だけ、同じカードのTシャツへご案内します。</p>
+            <div class="merch-links" id="merch-links"></div>
+            <p class="merch-note" id="merch-note"></p>
+          </div>
           <div class="actions">
             <button class="ghost-btn" type="button" id="again-btn">もう一度占う</button>
           </div>
@@ -4336,6 +4452,11 @@
     const spreadEl = document.getElementById('spread');
     const oracleBox = document.getElementById('oracle-box');
     const oracleText = document.getElementById('oracle-text');
+    const merchCTA = document.getElementById('merch-cta');
+    const merchTitle = document.getElementById('merch-title');
+    const merchText = document.getElementById('merch-text');
+    const merchLinks = document.getElementById('merch-links');
+    const merchNote = document.getElementById('merch-note');
     const imageDebug = document.getElementById('image-debug');
     const soundToggle = document.getElementById('sound-toggle');
     const bgm = {
@@ -4344,6 +4465,32 @@
       result: document.getElementById('bgm-result')
     };
     const CARD_BACK_FILE = 'card back.jpg';
+    const CREATOR_SHOP_URL = 'https://market.up-t.jp/creator/64e3dfa92ddbd';
+    const MAJOR_ARCANA_MERCH_URLS = {
+      '愚者': 'https://market.up-t.jp/6a4c944377fb4',
+      '魔術師': 'https://market.up-t.jp/6a4c958645450',
+      '女教皇': 'https://market.up-t.jp/6a4c960380419',
+      '女帝': 'https://market.up-t.jp/6a4dfb0dcb0e5',
+      '皇帝': 'https://market.up-t.jp/6a4c96dfb91d5',
+      '法王': 'https://market.up-t.jp/6a4c9733b6fa9',
+      '恋人たち': 'https://market.up-t.jp/6a4c97a363251',
+      '戦車': 'https://market.up-t.jp/6a4c9993cadea',
+      '力': 'https://market.up-t.jp/6a4c99f350c73',
+      '隠者': 'https://market.up-t.jp/6a4c9a56a3f20',
+      '運命の輪': 'https://market.up-t.jp/6a4c9ab3bf8ba',
+      '正義': 'https://market.up-t.jp/6a4c9b1e50830',
+      '吊るされた男': 'https://market.up-t.jp/6a4c9ba73f25b',
+      '吊られた男': 'https://market.up-t.jp/6a4c9ba73f25b',
+      '死': 'https://market.up-t.jp/6a4c9bff95fd1',
+      '節制': 'https://market.up-t.jp/6a4c9c60c375c',
+      '悪魔': 'https://market.up-t.jp/6a4c9cd63e9ee',
+      '塔': 'https://market.up-t.jp/6a4c9d3a7a0ea',
+      '星': 'https://market.up-t.jp/6a4c9d8f44b0b',
+      '月': 'https://market.up-t.jp/6a4c9df2eba6f',
+      '太陽': 'https://market.up-t.jp/6a4c9e44de871',
+      '審判': 'https://market.up-t.jp/6a4c9e9479061',
+      '世界': 'https://market.up-t.jp/6a4c9ef41549e'
+    };
 
     // GitHub Pages上ではスペースが自動的に %20 として扱われるため、
     // CSSにはエンコード済みURLを渡しておく。
@@ -4643,6 +4790,7 @@
       }
       if (oracleBox) oracleBox.classList.remove('show');
       if (oracleText) oracleText.textContent = '';
+      renderMerchCTA([]);
     }
 
     function playResultSequence(entries, category) {
@@ -4672,6 +4820,7 @@
       schedule(() => {
         title.textContent = '三枚が示す、今のあなたへの言葉です。';
         oracleText.textContent = makeOracle(entries, category);
+        renderMerchCTA(entries);
         oracleBox.classList.add('show');
       }, oracleDelay);
     }
@@ -4694,6 +4843,59 @@
         spreadEl.appendChild(createReadingCard(entry, slots[index], category, index, 'spread'));
       });
       requestAnimationFrame(() => spreadEl.classList.add('show'));
+    }
+
+    function getMajorArcanaMerch(entries) {
+      const seen = new Set();
+      return entries
+        .filter(entry => entry && entry.card && entry.card.arcana === '大アルカナ')
+        .map(entry => {
+          const name = entry.card.name;
+          if (seen.has(name)) return null;
+          seen.add(name);
+          const url = MAJOR_ARCANA_MERCH_URLS[name] || CREATOR_SHOP_URL;
+          return {
+            name,
+            url,
+            fallback: !MAJOR_ARCANA_MERCH_URLS[name] || url === CREATOR_SHOP_URL
+          };
+        })
+        .filter(Boolean);
+    }
+
+    function renderMerchCTA(entries) {
+      if (!merchCTA || !merchTitle || !merchText || !merchLinks || !merchNote) return;
+      const merchItems = getMajorArcanaMerch(entries || []);
+      merchLinks.innerHTML = '';
+      merchNote.textContent = '';
+
+      if (!merchItems.length) {
+        merchCTA.hidden = true;
+        return;
+      }
+
+      merchCTA.hidden = false;
+      if (merchItems.length === 1) {
+        merchTitle.textContent = `「${merchItems[0].name}」を、日常のお守りに。`;
+        merchText.textContent = `今回のリーディングでは、大アルカナ「${merchItems[0].name}」が現れました。占いの余韻をそのまま持ち帰りたい方へ、同じカードのTシャツをご案内します。`;
+      } else {
+        merchTitle.textContent = '現れた大アルカナを、日常のお守りに。';
+        merchText.textContent = `今回は大アルカナが${merchItems.length}枚出ました。気になったカードと同じ絵柄のTシャツへ、そのまま進めます。`;
+      }
+
+      merchItems.forEach(item => {
+        const link = document.createElement('a');
+        link.className = 'merch-btn';
+        link.href = item.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = `「${item.name}」のTシャツを見る`;
+        merchLinks.appendChild(link);
+      });
+
+      if (merchItems.some(item => item.fallback)) {
+        merchNote.textContent = '※ 一部のカードは個別商品ページ未確認のため、クリエイターページへご案内します。';
+      }
     }
 
     function createReadingCard(entry, slot, category, index, mode = 'spread') {
@@ -4998,17 +5200,84 @@ ${summary}`;
     }
 
     function makeSummarySentence(a, b, c, category) {
-      const direction = positiveDirection(category);
-      const currentState = a.reversed
-        ? `${firstWord(a)}に少し揺れている心`
-        : `${firstWord(a)}として育っている力`;
-      const issueState = b.reversed
-        ? `${firstWord(b)}を責めずにほどくこと`
-        : `${firstWord(b)}をやさしく整えること`;
-      const adviceState = c.reversed
-        ? `${firstWord(c)}を急がず扱うこと`
-        : `${firstWord(c)}を小さな行動にすること`;
-      return `まとめると、${a.card.name}は${currentState}、${b.card.name}は${issueState}、${c.card.name}は${adviceState}を告げています。焦らず選べば、${direction}へ近づけます。`;
+      const seed = summarySeed(a, b, c, category);
+      const currentNoun = pickBySeed(['土台', '灯り', '起点', '内なる力'], seed);
+      const issueNoun = pickBySeed(['整える扉', '見直す場所', 'ほどく糸', '越えていく波'], seed + 3);
+      const adviceNoun = pickBySeed(['次の一歩', '進む方向', 'やさしい答え', '明日の合図'], seed + 7);
+      const current = `${a.card.name}の「${firstWord(a)}」は今の${currentNoun}`;
+      const issue = `${b.card.name}の「${firstWord(b)}」は${issueNoun}`;
+      const advice = `${c.card.name}の「${firstWord(c)}」は${adviceNoun}`;
+      const outcome = summaryOutcome(c, category, seed);
+      return `まとめると、${current}、${issue}、${advice}です。${outcome}`;
+    }
+
+    function summarySeed(a, b, c, category) {
+      const raw = `${category}|${a.card.id}:${a.reversed ? 'R' : 'U'}|${b.card.id}:${b.reversed ? 'R' : 'U'}|${c.card.id}:${c.reversed ? 'R' : 'U'}`;
+      let hash = 0;
+      for (let i = 0; i < raw.length; i++) {
+        hash = ((hash << 5) - hash + raw.charCodeAt(i)) | 0;
+      }
+      return Math.abs(hash);
+    }
+
+    function pickBySeed(list, seed) {
+      return list[seed % list.length];
+    }
+
+    function summaryOutcome(adviceEntry, category, seed) {
+      const suit = adviceEntry.card.suit || '大アルカナ';
+      const movement = adviceEntry.reversed
+        ? pickBySeed(['力を抜いたぶん', '一度立ち止まるほど', '抱え込みをほどくほど', '結論をやわらかく待つほど'], seed + 11)
+        : pickBySeed(['素直に動かすほど', '小さく形にするほど', '今日の一歩に移すほど', '心を開いて扱うほど'], seed + 13);
+
+      const outcomes = {
+        '恋愛': {
+          'ワンド': 'ふたりの温度が少しずつ戻ります。',
+          'カップ': 'やさしい本音が相手に届きやすくなります。',
+          'ソード': '言葉のすれ違いが静かにほどけていきます。',
+          'ペンタクル': '安心できる距離と約束が育っていきます。',
+          '大アルカナ': 'この恋に必要な気づきが、自然に見えてきます。'
+        },
+        '仕事': {
+          'ワンド': '停滞していた流れに動きが生まれます。',
+          'カップ': '周囲との呼吸が合い、助けを受け取りやすくなります。',
+          'ソード': '判断が澄み、次に選ぶべき作業が見えてきます。',
+          'ペンタクル': '成果につながる形が、少しずつ固まっていきます。',
+          '大アルカナ': '今の役割に込める意味が、静かに定まっていきます。'
+        },
+        '健康': {
+          'ワンド': '身体に戻る元気を、無理なく使いやすくなります。',
+          'カップ': '心の緊張がゆるみ、回復の余白が生まれます。',
+          'ソード': '考えすぎていた不安を、整理しやすくなります。',
+          'ペンタクル': '生活のリズムが整い、安心して休みやすくなります。',
+          '大アルカナ': '心身が求めている変化に、やさしく気づけます。'
+        },
+        '家族': {
+          'ワンド': '家の中に、前向きな会話のきっかけが戻ります。',
+          'カップ': '言えなかった気持ちを、穏やかに受け止め合えます。',
+          'ソード': '絡まっていた言葉がほどけ、話しやすくなります。',
+          'ペンタクル': '日々の約束や役割が、少しずつ安定します。',
+          '大アルカナ': '家族の中で大切にしたいものが見えやすくなります。'
+        },
+        '人間関係': {
+          'ワンド': '関係に新しい風が入り、動き出しやすくなります。',
+          'カップ': 'やさしい距離感が戻り、心が通いやすくなります。',
+          'ソード': '境界線がはっきりし、無理なく向き合えます。',
+          'ペンタクル': '信頼を積み直すための現実的な一歩が見えます。',
+          '大アルカナ': '誰とどう関わるか、大切な軸が見えてきます。'
+        },
+        'ギャンブル': {
+          'ワンド': '勢いを味方にしつつ、熱くなりすぎず動けます。',
+          'カップ': '気分に流されず、自分の感覚を静かに扱えます。',
+          'ソード': '勝負どころと引き際を、冷静に見分けやすくなります。',
+          'ペンタクル': '金額や時間の線引きが、結果を守ってくれます。',
+          '大アルカナ': '流れに飲まれず、今の勝負の意味を見極められます。'
+        }
+      };
+
+      const categoryOutcomes = outcomes[category] || {};
+      const ending = categoryOutcomes[suit] || categoryOutcomes['大アルカナ'] || '明るい流れを受け取りやすくなります。';
+      return `${movement}、${ending}`;
     }
 
     function positiveDirection(category) {
