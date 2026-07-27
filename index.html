@@ -5024,7 +5024,9 @@
       resultArea.style.display = 'block';
       playResultSequence(selected, category);
       ritualRunning = false;
+      categorySelect.disabled = false;
       document.body.classList.remove('is-running');
+      updateCategoryCooldownUI();
       try {
         resultArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } catch (e) {
