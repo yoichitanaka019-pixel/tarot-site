@@ -4452,8 +4452,8 @@
 
     const slots = [
       { key: 'present', name: '一枚目｜現在', nameEn: 'Card 1｜Present', label: '現在', labelEn: 'Present', purpose: '今、表面に現れている流れ' },
-      { key: 'issue', name: '二枚目｜課題', nameEn: 'Card 2｜Issue', label: '課題', labelEn: 'Issue', purpose: 'まだ見えていない課題や影' },
-      { key: 'advice', name: '三枚目｜助言', nameEn: 'Card 3｜Advice', label: '助言', labelEn: 'Advice', purpose: 'これから取るべき行動' }
+      { key: 'issue', name: '二枚目｜課題', nameEn: 'Card 2｜Challenge', label: '課題', labelEn: 'Challenge', purpose: 'まだ見えていない課題や影' },
+      { key: 'advice', name: '三枚目｜助言', nameEn: 'Card 3｜Guidance', label: '助言', labelEn: 'Guidance', purpose: 'これから取るべき行動' }
     ];
 
     const categorySummaries = {
@@ -4471,7 +4471,7 @@
       '健康': { ja: '健康', en: 'Health' },
       '家族': { ja: '家族', en: 'Family' },
       '人間関係': { ja: '人間関係', en: 'Relationships' },
-      'ギャンブル': { ja: 'ギャンブル', en: 'Luck & Gambling' }
+      'ギャンブル': { ja: 'ギャンブル', en: 'Luck & Risk' }
     };
 
     const UI_TEXT = {
@@ -4809,22 +4809,37 @@
     }
 
     function englishElementTone(entry) {
-      if (entry.card.suit === 'ワンド') return 'this card carries the energy of action, courage, and momentum.';
-      if (entry.card.suit === 'カップ') return 'this card carries the energy of feelings, trust, and emotional honesty.';
-      if (entry.card.suit === 'ソード') return 'this card carries the energy of thought, words, and clear decisions.';
-      if (entry.card.suit === 'ペンタクル') return 'this card carries the energy of stability, daily habits, and practical results.';
-      return 'this Major Arcana card points to a larger lesson, turning point, or inner realization.';
+      if (entry.card.suit === 'ワンド') return 'a spark of courage, movement, desire, and the will to begin';
+      if (entry.card.suit === 'カップ') return 'feelings, trust, tenderness, and the truth of the heart';
+      if (entry.card.suit === 'ソード') return 'clear thought, honest words, boundaries, and the courage to choose';
+      if (entry.card.suit === 'ペンタクル') return 'stability, daily reality, patience, and what can be built with care';
+      return 'a deeper turning point, an inner lesson, or a message that should not be rushed';
+    }
+
+    function englishPositionReading(entry, position, category) {
+      const name = cardDisplayName(entry.card);
+      const energy = englishElementTone(entry);
+      const orientation = entry.reversed
+        ? 'Because it is reversed, its message is not a warning to fear, but a place to loosen your grip and listen more carefully.'
+        : 'Because it is upright, its message can be trusted as a clear thread running through today.';
+      if (position === 'present') {
+        return `${name} opens the reading by revealing the atmosphere around you now: ${energy}. ${orientation}`;
+      }
+      if (position === 'challenge') {
+        return `${name} shows the gentle challenge in this situation. Something connected to ${energy} may need more patience, honesty, or room to breathe. ${orientation}`;
+      }
+      return `${name} offers guidance for the next step. Let ${energy} become one small, practical choice rather than a heavy demand. ${orientation}`;
     }
 
     function englishCategoryGuidance(category) {
       return {
-        '恋愛': 'pay attention not only to the other person, but also to the distance that lets your heart feel safe.',
-        '仕事': 'look for one practical move that can lead to your next visible result.',
-        '健康': 'protect your rhythm, your rest, and the small choices that help you recover.',
-        '家族': 'choose a calm tone before trying to decide who is right.',
-        '人間関係': 'notice where kindness is healthy, and where a boundary may be needed.',
-        'ギャンブル': 'keep your limit, timing, and exit point clear before the mood becomes too strong.'
-      }[category] || 'choose the smallest honest step rather than forcing a quick answer.';
+        '恋愛': 'let the reading guide you back to an honest emotional distance: close enough to be warm, but not so close that you lose your own calm.',
+        '仕事': 'look for the next useful move rather than the perfect answer. A small action taken with care may bring more clarity than waiting for certainty.',
+        '健康': 'treat rest, rhythm, and gentleness as part of the message. Your body may respond better to steadiness than to pressure.',
+        '家族': 'choose a softer tone before trying to fix everything. A calm question may open more space than a firm conclusion.',
+        '人間関係': 'notice where kindness feels natural, and where a boundary would protect your peace. You do not have to answer everything at once.',
+        'ギャンブル': 'keep your limits clear before the mood becomes strong. The reading favors calm timing, a defined stop point, and respect for your own boundaries.'
+      }[category] || 'choose one small honest step today, and let the larger answer unfold without force.';
     }
 
     function englishSpreadTone(entries) {
@@ -4832,18 +4847,28 @@
       const majorCount = entries.filter(e => e.card.arcana === '大アルカナ').length;
       const notes = [];
       if (majorCount >= 2) {
-        notes.push(`With ${majorCount} Major Arcana cards, this reading may point to a larger turning point rather than a passing mood.`);
+        notes.push(`With ${majorCount} Major Arcana cards, this is not only about mood or timing; it may be pointing to a larger lesson taking shape beneath the surface.`);
       } else {
-        notes.push('This reading leaves room for small daily choices to change the flow.');
+        notes.push('This spread leaves room for ordinary choices to gently change the day’s direction.');
       }
       if (reversedCount >= 2) {
-        notes.push('Because several cards are reversed, it may be better to release pressure before adding new action.');
+        notes.push('Several reversed cards suggest that less pressure may bring more movement. Release what feels forced before adding anything new.');
       } else if (reversedCount === 1) {
-        notes.push('One reversed card shows a single point of tension that can be softened with care.');
+        notes.push('The single reversed card marks one tender point in the reading. Give that area patience rather than judgment.');
       } else {
-        notes.push('With all three cards upright, the message can be handled in a direct and simple way.');
+        notes.push('With all three cards upright, the message is comparatively clear: follow the simple step that is already visible.');
       }
       return notes.join(' ');
+    }
+
+    function englishSummarySentence(a, b, c, category) {
+      const present = cardDisplayName(a.card);
+      const challenge = cardDisplayName(b.card);
+      const guidance = cardDisplayName(c.card);
+      const closing = c.reversed
+        ? 'Move gently, and let the next answer arrive without forcing it.'
+        : 'Let today’s message guide one small, practical step.';
+      return `${present} reveals the present current, ${challenge} shows what asks for care, and ${guidance} offers the direction forward. ${closing}`;
     }
 
     function setupAudio() {
@@ -5416,16 +5441,17 @@
     function makeCardMessageEnglish(entry, slot, category) {
       const role = slotLabel(slot);
       const categoryName = categoryDisplayName(category);
-      const tone = englishElementTone(entry);
+      const cardName = cardDisplayName(entry.card);
+      const energy = englishElementTone(entry);
       const orientation = entry.reversed
-        ? 'Because it appears reversed, treat this as something to soften, rebalance, or approach with patience.'
-        : 'Because it appears upright, this energy is available to use in a clear and natural way.';
+        ? 'Its reversed position asks you to soften pressure, pause before reacting, and notice where the energy has become blocked.'
+        : 'Its upright position suggests this energy can be used honestly, gently, and with more trust in your own timing.';
       const position = slot.key === 'present'
-        ? 'what is surfacing around you now'
+        ? 'reveals the atmosphere surrounding you now'
         : slot.key === 'issue'
-          ? 'the part of the situation that needs gentle attention'
-          : 'the attitude that can help you take the next step';
-      return `In the ${role} position, ${cardLabel(entry)} points to ${position}. For ${categoryName}, ${tone} ${orientation}`;
+          ? 'shows the place where a little patience or care may change the flow'
+          : 'offers a quiet direction for your next step';
+      return `In the ${role} position, ${cardName} ${position}. Around ${categoryName}, it speaks of ${energy}. ${orientation}`;
     }
 
     function makeOracle(entries, category) {
@@ -5453,18 +5479,20 @@ ${summary}`;
       const [a, b, c] = entries;
       const categoryName = categoryDisplayName(category);
       rememberOraclePattern(entries, category);
-      return `Your three cards are:
+      return `Your three-card message:
 Present: ${cardLabel(a)}
-Issue: ${cardLabel(b)}
-Advice: ${cardLabel(c)}
+Challenge: ${cardLabel(b)}
+Guidance: ${cardLabel(c)}
 
-The first card shows the energy surrounding you now. The second card points to what needs care, patience, or a new angle. The final card suggests the attitude that can help you move forward.
+${englishPositionReading(a, 'present', category)}
+${englishPositionReading(b, 'challenge', category)}
+${englishPositionReading(c, 'guidance', category)}
 
 For ${categoryName}, ${englishCategoryGuidance(category)}
 
 ${englishSpreadTone(entries)}
 
-Summary: ${cardDisplayName(a.card)} shows the current flow, ${cardDisplayName(b.card)} marks the point to adjust, and ${cardDisplayName(c.card)} offers the next step. Let the message stay small and practical today.`;
+Summary: ${englishSummarySentence(a, b, c, category)}`;
     }
 
     function cardLabel(entry) {
