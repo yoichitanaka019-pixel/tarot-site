@@ -226,7 +226,7 @@
       color: rgba(239,232,255,.78);
       font-size: .83rem;
     }
-    .sound-toggle {
+    .sound-toggle, .lang-toggle {
       width: auto;
       min-height: 42px;
       padding: 0 16px;
@@ -713,7 +713,8 @@
       <h1 class="site-title"><span class="title-line title-line-main">毎日占い</span><span class="title-line title-line-sub">クイック タロット</span></h1>
       <p class="lead">78枚のタロットカードの中から3枚を引くことで、6種類の占いが行えます。</p>
       <div class="audio-toolbar">
-        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">音楽：ON</button>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true">音楽：OFF</button>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language">English</button>
         <a class="shop-link-top" href="https://market.up-t.jp/creator/64e3dfa92ddbd" target="_blank" rel="noopener noreferrer">大アルカナウェア</a>
       </div>
     </section>
@@ -4450,9 +4451,9 @@
 ];
 
     const slots = [
-      { name: '一枚目｜現在', label: '現在', purpose: '今、表面に現れている流れ' },
-      { name: '二枚目｜課題', label: '課題', purpose: 'まだ見えていない課題や影' },
-      { name: '三枚目｜助言', label: '助言', purpose: 'これから取るべき行動' }
+      { key: 'present', name: '一枚目｜現在', nameEn: 'Card 1｜Present', label: '現在', labelEn: 'Present', purpose: '今、表面に現れている流れ' },
+      { key: 'issue', name: '二枚目｜課題', nameEn: 'Card 2｜Issue', label: '課題', labelEn: 'Issue', purpose: 'まだ見えていない課題や影' },
+      { key: 'advice', name: '三枚目｜助言', nameEn: 'Card 3｜Advice', label: '助言', labelEn: 'Advice', purpose: 'これから取るべき行動' }
     ];
 
     const categorySummaries = {
@@ -4462,6 +4463,74 @@
       '家族': '家族では、正しさの勝ち負けより、安心して話せる空気が流れを変えます。',
       '人間関係': '人間関係では、誰に合わせるかではなく、どこに境界線を引くかが大切です。',
       'ギャンブル': 'ギャンブルでは、流れを読む力以上に、熱くなった時の引き際が結果を守ります。'
+    };
+
+    const CATEGORY_LABELS = {
+      '恋愛': { ja: '恋愛', en: 'Love' },
+      '仕事': { ja: '仕事', en: 'Work' },
+      '健康': { ja: '健康', en: 'Health' },
+      '家族': { ja: '家族', en: 'Family' },
+      '人間関係': { ja: '人間関係', en: 'Relationships' },
+      'ギャンブル': { ja: 'ギャンブル', en: 'Luck & Gambling' }
+    };
+
+    const UI_TEXT = {
+      ja: {
+        pageTitle: '毎日占い｜クイック タロット',
+        eyebrow: 'THREE CARD ORACLE ・ CATEGORY TEXT EDITION',
+        titleMain: '毎日占い',
+        titleSub: 'クイック タロット',
+        lead: '78枚のタロットカードの中から3枚を引くことで、6種類の占いが行えます。',
+        soundOn: '音楽：ON',
+        soundOff: '音楽：OFF',
+        langButton: 'English',
+        shopTop: '大アルカナウェア',
+        categoryLabel: '占いたい内容',
+        start: 'カードを混ぜる',
+        shuffling: 'シャッフル中…',
+        waiting: '24時間待機中',
+        again: 'もう一度占う',
+        oracleTitle: '三枚の神託',
+        stageDefault: '裏返した78枚の山が、あなたの問いを待っています。',
+        cooldownDefault: '同じジャンルは、一度占うと24時間後まで再占いできません。',
+        pileLeft: '左の山',
+        pileCenter: '中央の山',
+        pileRight: '右の山',
+        stageShuffling: 'カードが静かに巡りながら、あなたの問いに重なっていきます。',
+        stagePiles: '三つの山が、ゆっくりと形を結びます。',
+        stageDrawing: 'それぞれの山から、今必要な一枚が浮かび上がります。',
+        stageSingle: '一枚ずつ、あなたへの象徴が姿を現します。',
+        stageSpread: '三枚がそろい、ひとつの流れを結びます。',
+        stageOracle: '三枚が示す、今のあなたへの言葉です。'
+      },
+      en: {
+        pageTitle: 'Daily Fortune | Quick Tarot',
+        eyebrow: 'THREE CARD ORACLE',
+        titleMain: 'Daily Fortune',
+        titleSub: 'Quick Tarot',
+        lead: 'Draw 3 cards from a 78-card tarot deck to receive 6 types of readings.',
+        soundOn: 'Music: ON',
+        soundOff: 'Music: OFF',
+        langButton: '日本語',
+        shopTop: 'Major Arcana Wear',
+        categoryLabel: 'Reading Category',
+        start: 'Shuffle the Cards',
+        shuffling: 'Shuffling…',
+        waiting: '24h Cooldown',
+        again: 'Read Again',
+        oracleTitle: 'Three-Card Oracle',
+        stageDefault: 'The 78 face-down cards are waiting for your question.',
+        cooldownDefault: 'After one reading, the same category cannot be read again for 24 hours.',
+        pileLeft: 'Left Pile',
+        pileCenter: 'Center Pile',
+        pileRight: 'Right Pile',
+        stageShuffling: 'The cards are quietly circling around your question.',
+        stagePiles: 'The three piles are slowly taking shape.',
+        stageDrawing: 'One necessary card rises from each pile.',
+        stageSingle: 'Your symbols will appear one card at a time.',
+        stageSpread: 'The three cards have gathered into one flow.',
+        stageOracle: 'Here is the message shown by your three cards.'
+      }
     };
 
     const stage = document.getElementById('deck-stage');
@@ -4482,6 +4551,7 @@
     const merchNote = document.getElementById('merch-note');
     const imageDebug = document.getElementById('image-debug');
     const soundToggle = document.getElementById('sound-toggle');
+    const langToggle = document.getElementById('lang-toggle');
     const bgm = {
       top: document.getElementById('bgm-top'),
       shuffle: document.getElementById('bgm-shuffle'),
@@ -4490,6 +4560,7 @@
     const CARD_BACK_FILE = 'card back.jpg';
     const CATEGORY_COOLDOWN_MS = 24 * 60 * 60 * 1000;
     const CATEGORY_COOLDOWN_KEY = 'tarot_category_cooldowns_v17';
+    const LANGUAGE_STORAGE_KEY = 'tarot_language_v18';
     const CREATOR_SHOP_URL = 'https://market.up-t.jp/creator/64e3dfa92ddbd';
     const MAJOR_ARCANA_MERCH_URLS = {
       '愚者': 'https://market.up-t.jp/6a4c944377fb4',
@@ -4521,6 +4592,7 @@
     // CSSにはエンコード済みURLを渡しておく。
     document.documentElement.style.setProperty('--card-back-image', 'url("' + encodeURI(CARD_BACK_FILE) + '")');
 
+    let currentLang = detectInitialLanguage();
     let selected = [];
     let visualCards = [];
     let ritualRunning = false;
@@ -4570,6 +4642,7 @@
     function initTarotApp() {
       if (initialized) return;
       initialized = true;
+      applyLanguage();
       createDeckVisual();
       setupAudio();
 
@@ -4584,6 +4657,12 @@
       });
       againBtn.addEventListener('click', resetRitual, false);
       categorySelect.addEventListener('change', updateCategoryCooldownUI, false);
+      if (langToggle) {
+        langToggle.addEventListener('click', function(event) {
+          event.preventDefault();
+          setLanguage(currentLang === 'ja' ? 'en' : 'ja');
+        }, false);
+      }
       updateCategoryCooldownUI();
       window.addEventListener('resize', () => {
         if (!ritualRunning && resultArea.style.display !== 'block') createDeckVisual();
@@ -4597,6 +4676,175 @@
       initTarotApp();
     }
 
+
+    function detectInitialLanguage() {
+      try {
+        const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+        if (saved === 'ja' || saved === 'en') return saved;
+      } catch (e) {}
+      const browserLang = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || 'ja';
+      return String(browserLang).toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function t(key) {
+      const dict = UI_TEXT[currentLang] || UI_TEXT.ja;
+      return dict[key] || UI_TEXT.ja[key] || key;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang === 'en' ? 'en' : 'ja';
+      try { localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang); } catch (e) {}
+      applyLanguage();
+    }
+
+    function applyLanguage() {
+      document.documentElement.lang = currentLang === 'en' ? 'en' : 'ja';
+      document.title = t('pageTitle');
+
+      const eyebrow = document.querySelector('.eyebrow');
+      const titleMain = document.querySelector('.title-line-main');
+      const titleSub = document.querySelector('.title-line-sub');
+      const lead = document.querySelector('.lead');
+      const categoryLabel = document.querySelector('label[for="category"]');
+      const shopTop = document.querySelector('.shop-link-top');
+      const oracleHeading = document.querySelector('#oracle-box h2');
+      const pileLeft = document.getElementById('pile-label-0');
+      const pileCenter = document.getElementById('pile-label-1');
+      const pileRight = document.getElementById('pile-label-2');
+
+      if (eyebrow) eyebrow.textContent = t('eyebrow');
+      if (titleMain) titleMain.textContent = t('titleMain');
+      if (titleSub) titleSub.textContent = t('titleSub');
+      if (lead) lead.textContent = t('lead');
+      if (categoryLabel) categoryLabel.textContent = t('categoryLabel');
+      if (shopTop) shopTop.textContent = t('shopTop');
+      if (againBtn) againBtn.textContent = t('again');
+      if (oracleHeading) oracleHeading.textContent = t('oracleTitle');
+      if (pileLeft) pileLeft.textContent = t('pileLeft');
+      if (pileCenter) pileCenter.textContent = t('pileCenter');
+      if (pileRight) pileRight.textContent = t('pileRight');
+      if (langToggle) langToggle.textContent = t('langButton');
+
+      updateSoundButton();
+      updateCategoryCooldownUI();
+
+      if (!ritualRunning && resultArea && resultArea.style.display !== 'block') {
+        title.textContent = t('stageDefault');
+      }
+      if (resultArea && resultArea.style.display === 'block' && selected.length) {
+        const category = categorySelect.value;
+        if (spreadEl && spreadEl.classList.contains('show')) renderFinalSpread(selected, category);
+        if (oracleBox && oracleBox.classList.contains('show')) {
+          oracleText.textContent = makeOracle(selected, category);
+          renderMerchCTA(selected);
+        }
+      }
+    }
+
+    function categoryDisplayName(category) {
+      const label = CATEGORY_LABELS[category];
+      return label ? label[currentLang] || label.ja : category;
+    }
+
+    function cooldownBlockedMessage(category, remaining) {
+      if (currentLang === 'en') {
+        return `${categoryDisplayName(category)} can be read again in ${formatCooldownRemaining(remaining)}. Please choose another category.`;
+      }
+      return `${categoryDisplayName(category)}は、あと${formatCooldownRemaining(remaining)}占えません。別のジャンルを選んでください。`;
+    }
+
+    function categoryCooldownNote(category, remaining) {
+      if (currentLang === 'en') {
+        return `${categoryDisplayName(category)} can be read only once every 24 hours. You can read it again in ${formatCooldownRemaining(remaining)}.`;
+      }
+      return `${categoryDisplayName(category)}は24時間に一度だけ占えます。あと${formatCooldownRemaining(remaining)}後に再び占えます。`;
+    }
+
+    function slotName(slot) {
+      return currentLang === 'en' ? slot.nameEn : slot.name;
+    }
+
+    function slotLabel(slot) {
+      return currentLang === 'en' ? slot.labelEn : slot.label;
+    }
+
+    function revealSlotMessage(slot) {
+      if (currentLang === 'en') return `${slotName(slot)} is quietly appearing.`;
+      return `${slot.name}のカードが、静かに姿を現します。`;
+    }
+
+    function orientationText(reversed) {
+      return currentLang === 'en'
+        ? reversed ? 'Reversed' : 'Upright'
+        : reversed ? '逆位置' : '正位置';
+    }
+
+    function arcanaText(card) {
+      if (currentLang === 'en') return card.arcana === '大アルカナ' ? 'Major Arcana' : 'Minor Arcana';
+      return card.arcana;
+    }
+
+    function suitText(suit) {
+      if (currentLang !== 'en') return suit;
+      return {
+        'ワンド': 'Wands',
+        'カップ': 'Cups',
+        'ソード': 'Swords',
+        'ペンタクル': 'Pentacles'
+      }[suit] || suit;
+    }
+
+    function cardDisplayName(card) {
+      if (currentLang !== 'en') return card.name;
+      return toTitleCase(String(card.en || card.name));
+    }
+
+    function majorCardDisplayName(jaName) {
+      const card = deck.find(item => item.name === jaName);
+      return card ? cardDisplayName(card) : jaName;
+    }
+
+    function toTitleCase(str) {
+      return str.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function englishElementTone(entry) {
+      if (entry.card.suit === 'ワンド') return 'this card carries the energy of action, courage, and momentum.';
+      if (entry.card.suit === 'カップ') return 'this card carries the energy of feelings, trust, and emotional honesty.';
+      if (entry.card.suit === 'ソード') return 'this card carries the energy of thought, words, and clear decisions.';
+      if (entry.card.suit === 'ペンタクル') return 'this card carries the energy of stability, daily habits, and practical results.';
+      return 'this Major Arcana card points to a larger lesson, turning point, or inner realization.';
+    }
+
+    function englishCategoryGuidance(category) {
+      return {
+        '恋愛': 'pay attention not only to the other person, but also to the distance that lets your heart feel safe.',
+        '仕事': 'look for one practical move that can lead to your next visible result.',
+        '健康': 'protect your rhythm, your rest, and the small choices that help you recover.',
+        '家族': 'choose a calm tone before trying to decide who is right.',
+        '人間関係': 'notice where kindness is healthy, and where a boundary may be needed.',
+        'ギャンブル': 'keep your limit, timing, and exit point clear before the mood becomes too strong.'
+      }[category] || 'choose the smallest honest step rather than forcing a quick answer.';
+    }
+
+    function englishSpreadTone(entries) {
+      const reversedCount = entries.filter(e => e.reversed).length;
+      const majorCount = entries.filter(e => e.card.arcana === '大アルカナ').length;
+      const notes = [];
+      if (majorCount >= 2) {
+        notes.push(`With ${majorCount} Major Arcana cards, this reading may point to a larger turning point rather than a passing mood.`);
+      } else {
+        notes.push('This reading leaves room for small daily choices to change the flow.');
+      }
+      if (reversedCount >= 2) {
+        notes.push('Because several cards are reversed, it may be better to release pressure before adding new action.');
+      } else if (reversedCount === 1) {
+        notes.push('One reversed card shows a single point of tension that can be softened with care.');
+      } else {
+        notes.push('With all three cards upright, the message can be handled in a direct and simple way.');
+      }
+      return notes.join(' ');
+    }
 
     function setupAudio() {
       Object.values(bgm).forEach(audio => {
@@ -4628,7 +4876,7 @@
 
     function updateSoundButton() {
       if (!soundToggle) return;
-      soundToggle.textContent = soundMuted ? '音楽：OFF' : '音楽：ON';
+      soundToggle.textContent = soundMuted ? t('soundOff') : t('soundOn');
       soundToggle.setAttribute('aria-pressed', soundMuted ? 'true' : 'false');
     }
 
@@ -4690,7 +4938,7 @@
       const remaining = getCategoryCooldownRemaining(selectedCategory);
       if (remaining > 0) {
         updateCategoryCooldownUI();
-        title.textContent = `${selectedCategory}は、あと${formatCooldownRemaining(remaining)}占えません。別のジャンルを選んでください。`;
+        title.textContent = cooldownBlockedMessage(selectedCategory, remaining);
         return;
       }
       ritualRunning = true;
@@ -4698,14 +4946,14 @@
       clearRitualTimers();
       document.body.classList.add('is-running');
       startBtn.disabled = true;
-      startBtn.textContent = 'シャッフル中…';
+      startBtn.textContent = t('shuffling');
       categorySelect.disabled = true;
       resultArea.style.display = 'none';
       clearResultPresentation();
       if (imageDebug) imageDebug.style.display = 'none';
       if (!visualCards.length) createDeckVisual();
 
-      title.textContent = 'カードが静かに巡りながら、あなたの問いに重なっていきます。';
+      title.textContent = t('stageShuffling');
       visualCards.forEach((card, i) => {
         card.classList.remove('swirl');
         card.style.opacity = '1';
@@ -4721,7 +4969,7 @@
     }
 
     function splitIntoPiles() {
-      title.textContent = '三つの山が、ゆっくりと形を結びます。';
+      title.textContent = t('stagePiles');
       const mobile = isMobileView();
       const stageWidth = stage.clientWidth || window.innerWidth || 360;
       const gap = mobile ? Math.min(105, Math.max(76, stageWidth * .24)) : 170;
@@ -4744,7 +4992,7 @@
     }
 
     function drawFromPiles() {
-      title.textContent = 'それぞれの山から、今必要な一枚が浮かび上がります。';
+      title.textContent = t('stageDrawing');
       selected = pickThreeCards();
       visualCards.forEach((card) => {
         card.style.opacity = '0';
@@ -4768,7 +5016,7 @@
 
     function showResult() {
       switchBGM('result', true);
-      title.textContent = '一枚ずつ、あなたへの象徴が姿を現します。';
+      title.textContent = t('stageSingle');
       stage.querySelectorAll('.drawn-card').forEach(el => el.remove());
       const category = categorySelect.value;
       recordCategoryReading(category);
@@ -4790,13 +5038,13 @@
       selected = [];
       ritualRunning = false;
       startBtn.disabled = false;
-      startBtn.textContent = 'カードを混ぜる';
+      startBtn.textContent = t('start');
       categorySelect.disabled = false;
       if (imageDebug) imageDebug.style.display = 'none';
       document.body.classList.remove('is-running');
       clearResultPresentation();
       resultArea.style.display = 'none';
-      title.textContent = '裏返した78枚の山が、あなたの問いを待っています。';
+      title.textContent = t('stageDefault');
       updateCategoryCooldownUI();
       createDeckVisual();
       try {
@@ -4854,6 +5102,11 @@
       const totalMinutes = Math.ceil(ms / 60000);
       const hours = Math.floor(totalMinutes / 60);
       const minutes = totalMinutes % 60;
+      if (currentLang === 'en') {
+        if (hours <= 0) return `${minutes} min`;
+        if (minutes <= 0) return `${hours}h`;
+        return `${hours}h ${minutes}m`;
+      }
       if (hours <= 0) return `${minutes}分`;
       if (minutes <= 0) return `${hours}時間`;
       return `${hours}時間${minutes}分`;
@@ -4861,12 +5114,16 @@
 
     function updateCategoryCooldownUI() {
       if (!categorySelect || !startBtn) return;
-      const data = cleanupCategoryCooldowns();
+      cleanupCategoryCooldowns();
       Array.from(categorySelect.options).forEach(option => {
         const remaining = getCategoryCooldownRemaining(option.value);
         option.disabled = remaining > 0 && option.value !== categorySelect.value;
-        const baseLabel = option.value;
-        option.textContent = remaining > 0 ? `${baseLabel}（あと${formatCooldownRemaining(remaining)}）` : baseLabel;
+        const baseLabel = categoryDisplayName(option.value);
+        option.textContent = remaining > 0
+          ? currentLang === 'en'
+            ? `${baseLabel} (${formatCooldownRemaining(remaining)} left)`
+            : `${baseLabel}（あと${formatCooldownRemaining(remaining)}）`
+          : baseLabel;
       });
 
       const category = categorySelect.value;
@@ -4874,15 +5131,15 @@
       if (cooldownNote) {
         if (remaining > 0) {
           cooldownNote.classList.add('is-locked');
-          cooldownNote.textContent = `${category}は24時間に一度だけ占えます。あと${formatCooldownRemaining(remaining)}後に再び占えます。`;
+          cooldownNote.textContent = categoryCooldownNote(category, remaining);
         } else {
           cooldownNote.classList.remove('is-locked');
-          cooldownNote.textContent = '同じジャンルは、一度占うと24時間後まで再占いできません。';
+          cooldownNote.textContent = t('cooldownDefault');
         }
       }
       if (!ritualRunning) {
         startBtn.disabled = remaining > 0;
-        startBtn.textContent = remaining > 0 ? '24時間待機中' : 'カードを混ぜる';
+        startBtn.textContent = remaining > 0 ? t('waiting') : t('start');
       }
     }
 
@@ -4921,20 +5178,20 @@
       entries.forEach((entry, index) => {
         schedule(() => {
           const slot = slots[index];
-          title.textContent = `${slot.name}のカードが、静かに姿を現します。`;
+          title.textContent = revealSlotMessage(slot);
           showSingleRevealCard(entry, slot, category);
         }, index * singleOffset);
       });
 
       schedule(() => {
-        title.textContent = '三枚がそろい、ひとつの流れを結びます。';
+        title.textContent = t('stageSpread');
         singleRevealStage.classList.remove('active');
         singleRevealStage.innerHTML = '';
         renderFinalSpread(entries, category);
       }, spreadDelay);
 
       schedule(() => {
-        title.textContent = '三枚が示す、今のあなたへの言葉です。';
+        title.textContent = t('stageOracle');
         oracleText.textContent = makeOracle(entries, category);
         renderMerchCTA(entries);
         oracleBox.classList.add('show');
@@ -4991,7 +5248,16 @@
       }
 
       merchCTA.hidden = false;
-      if (merchItems.length === 1) {
+      if (currentLang === 'en') {
+        if (merchItems.length === 1) {
+          const name = majorCardDisplayName(merchItems[0].name);
+          merchTitle.textContent = `Wear ${name} as a daily charm.`;
+          merchText.textContent = `A Major Arcana card, ${name}, appeared in your reading. You can visit the matching T-shirt page from here.`;
+        } else {
+          merchTitle.textContent = 'Wear the Major Arcana that appeared today.';
+          merchText.textContent = `${merchItems.length} Major Arcana cards appeared. Choose the one that stays with you most.`;
+        }
+      } else if (merchItems.length === 1) {
         merchTitle.textContent = `「${merchItems[0].name}」を、日常のお守りに。`;
         merchText.textContent = `今回のリーディングでは、大アルカナ「${merchItems[0].name}」が現れました。占いの余韻をそのまま持ち帰りたい方へ、同じカードのTシャツをご案内します。`;
       } else {
@@ -5005,12 +5271,16 @@
         link.href = item.url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.textContent = `「${item.name}」のTシャツを見る`;
+        link.textContent = currentLang === 'en'
+          ? `View the ${majorCardDisplayName(item.name)} T-shirt`
+          : `「${item.name}」のTシャツを見る`;
         merchLinks.appendChild(link);
       });
 
       if (merchItems.some(item => item.fallback)) {
-        merchNote.textContent = '※ 一部のカードは個別商品ページ未確認のため、クリエイターページへご案内します。';
+        merchNote.textContent = currentLang === 'en'
+          ? '※ Some cards may open the creator page if the individual product page cannot be confirmed.'
+          : '※ 一部のカードは個別商品ページ未確認のため、クリエイターページへご案内します。';
       }
     }
 
@@ -5030,14 +5300,14 @@
       setImageWithFallback(img, card.file, imageBox);
       const fallback = document.createElement('div');
       fallback.className = 'fallback-card';
-      fallback.innerHTML = `<div><strong>${card.name}</strong><small>${card.en}<br>${card.arcana}${card.suit ? '・' + card.suitTheme : ''}</small></div>`;
+      fallback.innerHTML = `<div><strong>${escapeHTML(cardDisplayName(card))}</strong><small>${escapeHTML(card.en)}<br>${escapeHTML(arcanaText(card))}${card.suit ? '・' + escapeHTML(suitText(card.suit)) : ''}</small></div>`;
       imageBox.append(img, fallback);
       const meta = document.createElement('div');
       meta.className = 'card-meta';
       meta.innerHTML = `
-        <div class="slot-name">${slot.name}</div>
-        <div class="card-name">${card.name}</div>
-        <span class="orientation">${reversed ? '逆位置' : '正位置'} / ${card.arcana}</span>
+        <div class="slot-name">${escapeHTML(slotName(slot))}</div>
+        <div class="card-name">${escapeHTML(cardDisplayName(card))}</div>
+        <span class="orientation">${escapeHTML(orientationText(reversed))} / ${escapeHTML(arcanaText(card))}</span>
         <p class="mini-reading">${escapeHTML(makeCardMessage(entry, slot, category))}</p>
       `;
       wrapper.append(imageBox, meta);
@@ -5130,6 +5400,7 @@
     function orientationKey(entry) { return entry.reversed ? 'reversed' : 'upright'; }
 
     function makeCardMessage(entry, slot, category) {
+      if (currentLang === 'en') return makeCardMessageEnglish(entry, slot, category);
       const parts = getCardMeaning(entry, category);
       const positionIntro = slot.label === '現在'
         ? '今の心の向き'
@@ -5140,7 +5411,23 @@
       return `${slot.label}の位置に出た${cardLabel(entry)}は、「${activeWords(entry)}」の気配を帯びています。${positionIntro}としては、${parts[key]}。`;
     }
 
+    function makeCardMessageEnglish(entry, slot, category) {
+      const role = slotLabel(slot);
+      const categoryName = categoryDisplayName(category);
+      const tone = englishElementTone(entry);
+      const orientation = entry.reversed
+        ? 'Because it appears reversed, treat this as something to soften, rebalance, or approach with patience.'
+        : 'Because it appears upright, this energy is available to use in a clear and natural way.';
+      const position = slot.key === 'present'
+        ? 'what is surfacing around you now'
+        : slot.key === 'issue'
+          ? 'the part of the situation that needs gentle attention'
+          : 'the attitude that can help you take the next step';
+      return `In the ${role} position, ${cardLabel(entry)} points to ${position}. For ${categoryName}, ${tone} ${orientation}`;
+    }
+
     function makeOracle(entries, category) {
+      if (currentLang === 'en') return makeOracleEnglish(entries, category);
       const [a, b, c] = entries;
       const relation = makeRelationSentence(a, b, category);
       const advice = makeAdviceSentence(a, b, c, category);
@@ -5160,7 +5447,28 @@ ${tone}
 ${summary}`;
     }
 
+    function makeOracleEnglish(entries, category) {
+      const [a, b, c] = entries;
+      const categoryName = categoryDisplayName(category);
+      rememberOraclePattern(entries, category);
+      return `Your three cards are:
+Present: ${cardLabel(a)}
+Issue: ${cardLabel(b)}
+Advice: ${cardLabel(c)}
+
+The first card shows the energy surrounding you now. The second card points to what needs care, patience, or a new angle. The final card suggests the attitude that can help you move forward.
+
+For ${categoryName}, ${englishCategoryGuidance(category)}
+
+${englishSpreadTone(entries)}
+
+Summary: ${cardDisplayName(a.card)} shows the current flow, ${cardDisplayName(b.card)} marks the point to adjust, and ${cardDisplayName(c.card)} offers the next step. Let the message stay small and practical today.`;
+    }
+
     function cardLabel(entry) {
+      if (currentLang === 'en') {
+        return `${cardDisplayName(entry.card)} (${orientationText(entry.reversed)})`;
+      }
       return `「${entry.card.name}」${entry.reversed ? '逆位置' : '正位置'}`;
     }
 
@@ -5454,7 +5762,7 @@ ${summary}`;
 
 
     function escapeHTML(str) {
-      return str.replace(/[&<>'"]/g, (tag) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[tag]));
+      return String(str).replace(/[&<>'"]/g, (tag) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[tag]));
     }
   </script>
 </body>
