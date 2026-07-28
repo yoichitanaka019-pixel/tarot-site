@@ -84,6 +84,41 @@
     }
     .ritual-panel > * { position: relative; }
 
+    .support-cta {
+      width: min(100%, 780px);
+      margin: 26px auto 0;
+      padding: clamp(16px, 3vw, 24px);
+      border: 1px solid rgba(217,180,95,.24);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,221,0,.10), transparent 16rem),
+        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      text-align: center;
+      box-shadow: 0 16px 50px rgba(0,0,0,.25), inset 0 0 34px rgba(217,180,95,.025);
+    }
+    .support-kicker {
+      margin: 0 0 8px;
+      color: var(--gold2);
+      font-size: .78rem;
+      letter-spacing: .16em;
+    }
+    .support-text {
+      margin: 0 auto 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: .92rem;
+    }
+    .bmc-button-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+    }
+    .bmc-button-wrap iframe,
+    .bmc-button-wrap a {
+      margin: 0 auto !important;
+    }
+
     .controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: end; max-width: 780px; margin: 0 auto 20px; }
     label { display: block; margin: 0 0 9px; color: var(--gold2); letter-spacing: .08em; font-size: .9rem; }
     select, button { width: 100%; min-height: 54px; border: none; border-radius: 18px; font-size: 1rem; font-family: inherit; }
@@ -769,6 +804,14 @@
             <button class="ghost-btn" type="button" id="again-btn">もう一度占う</button>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="support-cta" id="support-cta" aria-label="Support this site">
+      <p class="support-kicker" id="support-kicker">SUPPORT</p>
+      <p class="support-text" id="support-text">この占いが気に入ったら、制作の応援としてコーヒーを一杯贈れます。</p>
+      <div class="bmc-button-wrap">
+        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="yo.create" data-color="#FFDD00" data-emoji="" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
       </div>
     </section>
   </main>
@@ -4510,7 +4553,9 @@
         stageDrawing: 'それぞれの山から、今必要な一枚が浮かび上がります。',
         stageSingle: '一枚ずつ、あなたへの象徴が姿を現します。',
         stageSpread: '三枚がそろい、ひとつの流れを結びます。',
-        stageOracle: '三枚が示す、今のあなたへの言葉です。'
+        stageOracle: '三枚が示す、今のあなたへの言葉です。',
+        supportKicker: 'SUPPORT',
+        supportText: 'この占いが気に入ったら、制作の応援としてコーヒーを一杯贈れます。'
       },
       en: {
         pageTitle: 'Daily Fortune | Quick Tarot',
@@ -4538,7 +4583,9 @@
         stageDrawing: 'One necessary card rises from each pile.',
         stageSingle: 'Your symbols will appear one card at a time.',
         stageSpread: 'The three cards have gathered into one flow.',
-        stageOracle: 'Here is the message shown by your three cards.'
+        stageOracle: 'Here is the message shown by your three cards.',
+        supportKicker: 'SUPPORT',
+        supportText: 'If you enjoyed this reading, you can support the site with a small coffee.'
       }
     };
 
@@ -4717,6 +4764,8 @@
       const categoryLabel = document.querySelector('label[for="category"]');
       const shopTop = document.querySelector('.shop-link-top');
       const oracleHeading = document.querySelector('#oracle-box h2');
+      const supportKicker = document.getElementById('support-kicker');
+      const supportText = document.getElementById('support-text');
       const pileLeft = document.getElementById('pile-label-0');
       const pileCenter = document.getElementById('pile-label-1');
       const pileRight = document.getElementById('pile-label-2');
@@ -4729,6 +4778,8 @@
       if (shopTop) shopTop.textContent = t('shopTop');
       if (againBtn) againBtn.textContent = t('again');
       if (oracleHeading) oracleHeading.textContent = t('oracleTitle');
+      if (supportKicker) supportKicker.textContent = t('supportKicker');
+      if (supportText) supportText.textContent = t('supportText');
       if (pileLeft) pileLeft.textContent = t('pileLeft');
       if (pileCenter) pileCenter.textContent = t('pileCenter');
       if (pileRight) pileRight.textContent = t('pileRight');
