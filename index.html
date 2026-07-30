@@ -809,18 +809,36 @@
     .trust-chips {
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 9px;
-      margin: 18px auto 0;
+      gap: 0;
+      margin: 20px auto 0;
+      color: rgba(239,232,255,.68);
+      font-size: .76rem;
+      letter-spacing: .08em;
     }
     .trust-chip {
-      padding: 7px 13px;
-      border-radius: 999px;
-      border: 1px solid rgba(217,180,95,.28);
-      color: var(--gold2);
-      background: rgba(255,255,255,.045);
-      font-size: .78rem;
-      letter-spacing: .08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 3px 15px;
+      white-space: nowrap;
+    }
+    .trust-chip::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold2);
+      box-shadow: 0 0 9px rgba(244,215,140,.42);
+      flex: 0 0 auto;
+    }
+    .trust-chip + .trust-chip {
+      border-left: 1px solid rgba(217,180,95,.2);
+    }
+    @media (max-width: 430px) {
+      .trust-chips { gap: 7px 0; }
+      .trust-chip { padding: 3px 10px; }
     }
     .controls {
       display: flex;
@@ -1076,7 +1094,7 @@
         </details>
         <details>
           <summary>お問い合わせ</summary>
-          <div class="site-info-body">不具合やご意見は、<a id="github-contact" href="https://github.com/yo-create-wr" target="_blank" rel="noopener noreferrer">公開元のGitHubプロフィール</a>またはKo-fiからお知らせください。</div>
+          <div class="site-info-body">不具合やご意見は、<a class="x-contact-link" href="https://x.com/douyoh" target="_blank" rel="noopener noreferrer">X（@douyoh）</a>までお知らせください。</div>
         </details>
       </div>
       <div data-lang-block="en" hidden>
@@ -1094,7 +1112,7 @@
         </details>
         <details>
           <summary>Contact</summary>
-          <div class="site-info-body">For bugs or feedback, visit the <a href="https://github.com/yo-create-wr" target="_blank" rel="noopener noreferrer">publisher's GitHub profile</a> or contact the creator through Ko-fi.</div>
+          <div class="site-info-body">For bugs or feedback, contact <a class="x-contact-link" href="https://x.com/douyoh" target="_blank" rel="noopener noreferrer">@douyoh on X</a>.</div>
         </details>
       </div>
     </section>
@@ -5871,10 +5889,11 @@
       if (kofiLink) kofiLink.addEventListener('click', function() {
         trackEvent('kofi_click', { destination: kofiLink.href, language: currentLang });
       }, false);
-      const githubContact = document.getElementById('github-contact');
-      if (githubContact) githubContact.addEventListener('click', function() {
-        trackEvent('contact_click', { method: 'github' });
-      }, false);
+      document.querySelectorAll('.x-contact-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          trackEvent('contact_click', { method: 'x', destination: link.href, language: currentLang });
+        }, false);
+      });
     }
 
     async function copyText(text) {
