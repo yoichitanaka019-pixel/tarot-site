@@ -3,7 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>三枚神託タロット｜78枚対応・英語JPG画像版</title>
+  <title>エブリデイ クイックタロット｜無料・登録不要の3枚引き</title>
+  <meta id="meta-description" name="description" content="恋愛・仕事・健康など、気になるテーマを選び、78枚のカードから現在・課題・助言の3枚を受け取れます。無料・登録不要です。" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://yo-create-wr.github.io/quick-tarot/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0b0719" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="エブリデイ クイックタロット" />
+  <meta id="og-title" property="og:title" content="エブリデイ クイックタロット｜無料・登録不要の3枚引き" />
+  <meta id="og-description" property="og:description" content="78枚のカードから、現在・課題・助言の3枚を受け取れます。" />
+  <meta property="og:url" content="https://yo-create-wr.github.io/quick-tarot/" />
+  <meta property="og:image" content="https://yo-create-wr.github.io/quick-tarot/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta id="og-locale" property="og:locale" content="ja_JP" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="twitter-title" name="twitter:title" content="エブリデイ クイックタロット" />
+  <meta id="twitter-description" name="twitter:description" content="78枚のカードから、現在・課題・助言の3枚を受け取れます。" />
+  <meta name="twitter:image" content="https://yo-create-wr.github.io/quick-tarot/og-image.jpg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "エブリデイ クイックタロット",
+    "alternateName": "Everyday Quick Tarot",
+    "url": "https://yo-create-wr.github.io/quick-tarot/",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Any",
+    "inLanguage": ["ja", "en"],
+    "isAccessibleForFree": true,
+    "description": "78枚のカードから現在・課題・助言の3枚を受け取れる、無料・登録不要のWebアプリです。"
+  }
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LRX10HZ447"></script>
   <script>
@@ -26,7 +62,7 @@
       --muted: #cfc5e8;
       --card-w: clamp(92px, 27vw, 176px);
       --card-h: calc(var(--card-w) * 1.61);
-      --card-back-image: url("card%20back.jpg");
+      --card-back-image: url("card%20back.webp");
     }
 
     * { box-sizing: border-box; }
@@ -228,7 +264,7 @@
 
     /* ===== Brush-up v1: 上質演出・音楽準備 ===== */
     :root {
-      --card-back-image: url("card%20back.jpg");
+      --card-back-image: url("card%20back.webp");
       --luxury-shadow: 0 32px 90px rgba(0,0,0,.52), 0 0 60px rgba(217,180,95,.12);
     }
 
@@ -749,6 +785,191 @@
       .lead { max-width: 24em; line-height: 1.82; font-size: .94rem; }
     }
 
+
+
+    /* ===== v27: discovery, choice, sharing, trust ===== */
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    .hero-instruction {
+      max-width: 680px;
+      margin: 22px auto 0;
+      color: rgba(255,248,233,.9);
+      line-height: 1.85;
+      font-size: clamp(.92rem, 2vw, 1.02rem);
+    }
+    .trust-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 18px auto 0;
+    }
+    .trust-chip {
+      padding: 7px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(217,180,95,.28);
+      color: var(--gold2);
+      background: rgba(255,255,255,.045);
+      font-size: .78rem;
+      letter-spacing: .08em;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      max-width: 900px;
+      gap: 22px;
+    }
+    .category-control { width: 100%; }
+    .category-label {
+      display: block;
+      margin: 0 0 14px;
+      color: var(--gold2);
+      text-align: center;
+      letter-spacing: .1em;
+      font-size: .94rem;
+    }
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .category-option {
+      position: relative;
+      min-height: 112px;
+      padding: 15px 12px 13px;
+      border-radius: 20px;
+      border: 1px solid rgba(217,180,95,.2);
+      color: var(--text);
+      background: linear-gradient(180deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+      cursor: pointer;
+      box-shadow: inset 0 0 24px rgba(0,0,0,.16);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease, opacity .22s ease, box-shadow .22s ease;
+    }
+    .category-option:hover:not(:disabled) {
+      transform: translateY(-2px);
+      border-color: rgba(255,241,185,.55);
+      background: linear-gradient(180deg, rgba(217,180,95,.13), rgba(255,255,255,.035));
+    }
+    .category-option.is-selected {
+      border-color: rgba(255,241,185,.8);
+      background: radial-gradient(circle at 50% 0%, rgba(217,180,95,.18), transparent 70%), rgba(255,255,255,.055);
+      box-shadow: 0 0 0 2px rgba(217,180,95,.1), 0 15px 34px rgba(0,0,0,.24), inset 0 0 28px rgba(217,180,95,.06);
+    }
+    .category-option:disabled { opacity: .42; cursor: not-allowed; }
+    .category-option.is-locked::after {
+      content: "24h";
+      position: absolute;
+      top: 8px;
+      right: 9px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.5);
+      color: rgba(255,241,185,.8);
+      font: 700 .66rem/1 sans-serif;
+    }
+    .category-symbol {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--gold2);
+      font-size: 1.42rem;
+      line-height: 1;
+      text-shadow: 0 0 18px rgba(217,180,95,.25);
+    }
+    .category-name { display: block; font-weight: 800; letter-spacing: .06em; font-size: .98rem; }
+    .category-caption { display: block; margin-top: 6px; color: var(--muted); font-size: .76rem; line-height: 1.35; }
+    .controls .primary-btn { align-self: center; width: min(360px, 100%); }
+    .category-safety-note {
+      max-width: 760px;
+      margin: 6px auto 0;
+      padding: 10px 14px;
+      border-radius: 14px;
+      color: rgba(239,232,255,.78);
+      background: rgba(0,0,0,.16);
+      font-size: .78rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .result-tools {
+      margin: 24px auto 0;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(217,180,95,.2);
+      background: rgba(255,255,255,.025);
+      text-align: center;
+    }
+    .result-tools-title { margin: 0 0 12px; color: var(--gold2); font-size: .86rem; letter-spacing: .1em; }
+    .result-tool-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .tool-btn {
+      width: auto;
+      min-width: 150px;
+      min-height: 46px;
+      padding: 0 16px;
+      color: var(--gold2);
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(217,180,95,.32);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .tool-btn:hover { transform: translateY(-1px); background: rgba(217,180,95,.1); }
+    .share-status { display: block; min-height: 1.4em; margin-top: 9px; color: var(--muted); font-size: .76rem; }
+    .kofi-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 15px;
+      color: #fff;
+      background: #73524c;
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-weight: 800;
+      box-shadow: 0 12px 28px rgba(0,0,0,.25);
+      transition: transform .2s ease, filter .2s ease;
+    }
+    .kofi-link:hover { transform: translateY(-1px); filter: brightness(1.08); }
+    .site-info {
+      width: min(100%, 900px);
+      margin: 28px auto 0;
+      padding: clamp(18px, 3vw, 28px);
+      border: 1px solid rgba(217,180,95,.18);
+      border-radius: 24px;
+      background: rgba(255,255,255,.025);
+    }
+    .site-info details { border-bottom: 1px solid rgba(217,180,95,.12); }
+    .site-info details:last-child { border-bottom: 0; }
+    .site-info summary {
+      padding: 15px 2px;
+      color: var(--gold2);
+      cursor: pointer;
+      font-size: .9rem;
+      letter-spacing: .06em;
+    }
+    .site-info-body { padding: 0 2px 16px; color: var(--muted); font-size: .84rem; line-height: 1.85; }
+    .site-info a { color: var(--gold2); }
+    [data-lang-block][hidden] { display: none !important; }
+    .site-footer { padding: 24px 0 0; text-align: center; color: rgba(239,232,255,.52); font-size: .75rem; }
+    @media (max-width: 700px) {
+      .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+      .category-option { min-height: 102px; padding: 13px 8px 11px; border-radius: 17px; }
+      .result-tool-buttons { display: grid; grid-template-columns: 1fr; }
+      .tool-btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -756,6 +977,12 @@
     <section class="hero">
       <h1 class="site-title"><span class="title-line title-line-main">エブリデイ</span><span class="title-line title-line-sub">クイックタロット</span></h1>
       <p class="lead">恋愛や健康など、あなたが気になっている事柄を78枚のタロットカードを使ってアドバイスいたします</p>
+      <p class="hero-instruction" id="hero-instruction">心の中で質問を一つ思い浮かべ、気になるテーマを選んでください。3枚のカードが、現在・課題・助言を示します。</p>
+      <div class="trust-chips" aria-label="サイトの特徴">
+        <span class="trust-chip" id="trust-free">無料</span>
+        <span class="trust-chip" id="trust-no-register">登録不要</span>
+        <span class="trust-chip" id="trust-one-minute">約1分</span>
+      </div>
       <div class="audio-toolbar">
         <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="true">音楽：OFF</button>
         <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Language">English</button>
@@ -764,9 +991,10 @@
 
     <section class="ritual-panel" id="ritual-panel">
       <div class="controls" id="controls">
-        <div>
-          <label for="category">あなたが気になっていること</label>
-          <select id="category">
+        <div class="category-control">
+          <span class="category-label" id="category-label">あなたが気になっていること</span>
+          <label class="visually-hidden" for="category">あなたが気になっていること</label>
+          <select class="visually-hidden" id="category" aria-label="あなたが気になっていること">
             <option value="恋愛">恋愛</option>
             <option value="仕事">仕事</option>
             <option value="健康">健康</option>
@@ -774,10 +1002,19 @@
             <option value="人間関係">人間関係</option>
             <option value="ギャンブル">ギャンブル</option>
           </select>
+          <div class="category-grid" id="category-grid" role="radiogroup" aria-labelledby="category-label">
+            <button class="category-option is-selected" type="button" data-category="恋愛" role="radio" aria-checked="true"><span class="category-symbol">♡</span><span class="category-name">恋愛</span><span class="category-caption">気持ちと距離</span></button>
+            <button class="category-option" type="button" data-category="仕事" role="radio" aria-checked="false"><span class="category-symbol">◇</span><span class="category-name">仕事</span><span class="category-caption">選択と流れ</span></button>
+            <button class="category-option" type="button" data-category="健康" role="radio" aria-checked="false"><span class="category-symbol">＋</span><span class="category-name">健康</span><span class="category-caption">心身のバランス</span></button>
+            <button class="category-option" type="button" data-category="家族" role="radio" aria-checked="false"><span class="category-symbol">○</span><span class="category-name">家族</span><span class="category-caption">関係と安心</span></button>
+            <button class="category-option" type="button" data-category="人間関係" role="radio" aria-checked="false"><span class="category-symbol">◎</span><span class="category-name">人間関係</span><span class="category-caption">境界線と信頼</span></button>
+            <button class="category-option" type="button" data-category="ギャンブル" role="radio" aria-checked="false"><span class="category-symbol">☆</span><span class="category-name">ギャンブル</span><span class="category-caption">判断と引き際</span></button>
+          </div>
         </div>
         <button class="primary-btn" id="start-btn" type="button" onclick="return window.startTarotRitualSafe(event)" ontouchend="return window.startTarotRitualSafe(event)" onpointerup="return window.startTarotRitualSafe(event)">カードを混ぜる</button>
       </div>
       <p class="cooldown-note" id="cooldown-note" aria-live="polite"></p>
+      <p class="category-safety-note" id="category-safety-note">カードが示す内容は、未来や結果を保証するものではありません。ご自身の判断を大切にしてください。</p>
 
       <p class="stage-title" id="stage-title">裏返した78枚の山が、あなたの問いを待っています。</p>
       <div class="deck-stage" id="deck-stage" aria-live="polite">
@@ -792,6 +1029,15 @@
         <div class="oracle-box" id="oracle-box">
           <h2>三枚の神託</h2>
           <div class="oracle-text" id="oracle-text"></div>
+          <div class="result-tools" id="result-tools">
+            <p class="result-tools-title" id="result-tools-title">結果を保存・共有</p>
+            <div class="result-tool-buttons">
+              <button class="tool-btn" type="button" id="save-image-btn">画像で保存</button>
+              <button class="tool-btn" type="button" id="share-btn">シェア</button>
+              <button class="tool-btn" type="button" id="copy-link-btn">URLをコピー</button>
+            </div>
+            <span class="share-status" id="share-status" role="status" aria-live="polite"></span>
+          </div>
           <div class="merch-cta" id="merch-cta" aria-label="大アルカナウェア案内" hidden>
             <p class="merch-kicker" id="merch-kicker">MAJOR ARCANA WEAR</p>
             <h3 class="merch-title" id="merch-title">今日のカードを、日常のお守りに。</h3>
@@ -810,14 +1056,54 @@
       <p class="support-kicker" id="support-kicker">SUPPORT</p>
       <p class="support-text" id="support-text">このサイトが気に入ったら、Ko-fiで制作を応援できます。</p>
       <div class="kofi-button-wrap">
-        <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#73524c', 'I5K8240D50');kofiwidget2.draw();</script>
+        <a class="kofi-link" id="kofi-link" href="https://ko-fi.com/I5K8240D50" target="_blank" rel="noopener noreferrer">Support me on Ko-fi</a>
       </div>
     </section>
+
+    <section class="site-info" aria-label="サイト情報">
+      <div data-lang-block="ja">
+        <details>
+          <summary>このサイトについて</summary>
+          <div class="site-info-body">78枚のカードから3枚を選び、「現在・課題・助言」の順にメッセージをお届けするWebアプリです。無料で利用でき、会員登録は必要ありません。</div>
+        </details>
+        <details>
+          <summary>ご利用上の注意</summary>
+          <div class="site-info-body">カードが示す内容は、未来、健康状態、勝敗、利益などを保証するものではありません。大切な判断は現実の情報とご自身の意思をもとに行ってください。体調に不安がある場合は医療機関や専門家へご相談ください。</div>
+        </details>
+        <details>
+          <summary>プライバシー</summary>
+          <div class="site-info-body">利用状況の把握と改善のためGoogle Analytics 4を使用しています。また、言語設定、カテゴリごとの24時間制限、直近の文章重複を避けるための情報をブラウザのlocalStorageに保存します。カード番号、氏名、住所などの個人情報は入力・保存しません。</div>
+        </details>
+        <details>
+          <summary>お問い合わせ</summary>
+          <div class="site-info-body">不具合やご意見は、<a id="github-contact" href="https://github.com/yo-create-wr" target="_blank" rel="noopener noreferrer">公開元のGitHubプロフィール</a>またはKo-fiからお知らせください。</div>
+        </details>
+      </div>
+      <div data-lang-block="en" hidden>
+        <details>
+          <summary>About this site</summary>
+          <div class="site-info-body">This free web app draws three cards from a 78-card deck and presents them as Present, Challenge, and Guidance. No account is required.</div>
+        </details>
+        <details>
+          <summary>Important notice</summary>
+          <div class="site-info-body">The cards do not guarantee future events, health outcomes, wins, or profit. Make important decisions using reliable real-world information and your own judgment. Consult a qualified professional when health or safety is involved.</div>
+        </details>
+        <details>
+          <summary>Privacy</summary>
+          <div class="site-info-body">Google Analytics 4 is used to understand usage and improve the site. Your language choice, 24-hour category limits, and limited history used to reduce repeated wording are stored in your browser's localStorage. The site does not ask for or store card numbers, names, or addresses.</div>
+        </details>
+        <details>
+          <summary>Contact</summary>
+          <div class="site-info-body">For bugs or feedback, visit the <a href="https://github.com/yo-create-wr" target="_blank" rel="noopener noreferrer">publisher's GitHub profile</a> or contact the creator through Ko-fi.</div>
+        </details>
+      </div>
+    </section>
+    <footer class="site-footer">© YO-CREATE / Everyday Quick Tarot</footer>
   </main>
 
-  <audio id="bgm-top" loop preload="auto" src="music/top.mp3"></audio>
-  <audio id="bgm-shuffle" loop preload="auto" src="music/shuffle.mp3"></audio>
-  <audio id="bgm-result" loop preload="auto" src="music/result.mp3"></audio>
+  <audio id="bgm-top" loop preload="none" src="music/top.mp3"></audio>
+  <audio id="bgm-shuffle" loop preload="none" src="music/shuffle.mp3"></audio>
+  <audio id="bgm-result" loop preload="none" src="music/result.mp3"></audio>
 
   <script>
     const deck = [
@@ -826,7 +1112,7 @@
     "name": "愚者",
     "en": "THE FOOL",
     "file": [
-      "The Fool.jpg"
+      "The Fool.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -871,7 +1157,7 @@
     "name": "魔術師",
     "en": "THE MAGICIAN",
     "file": [
-      "The Magician.jpg"
+      "The Magician.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -916,7 +1202,7 @@
     "name": "女教皇",
     "en": "THE HIGH PRIESTESS",
     "file": [
-      "The High Priestess.jpg"
+      "The High Priestess.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -961,7 +1247,7 @@
     "name": "女帝",
     "en": "THE EMPRESS",
     "file": [
-      "The Empress.jpg"
+      "The Empress.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1006,7 +1292,7 @@
     "name": "皇帝",
     "en": "THE EMPEROR",
     "file": [
-      "The Emperor.jpg"
+      "The Emperor.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1051,7 +1337,7 @@
     "name": "法王",
     "en": "THE HIEROPHANT",
     "file": [
-      "The Hierophant.jpg"
+      "The Hierophant.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1096,7 +1382,7 @@
     "name": "恋人たち",
     "en": "THE LOVERS",
     "file": [
-      "The Lovers.jpg"
+      "The Lovers.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1141,7 +1427,7 @@
     "name": "戦車",
     "en": "THE CHARIOT",
     "file": [
-      "The Chariot.jpg"
+      "The Chariot.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1186,7 +1472,7 @@
     "name": "力",
     "en": "STRENGTH",
     "file": [
-      "Strength.jpg"
+      "Strength.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1231,7 +1517,7 @@
     "name": "隠者",
     "en": "THE HERMIT",
     "file": [
-      "The Hermit.jpg"
+      "The Hermit.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1276,7 +1562,7 @@
     "name": "運命の輪",
     "en": "WHEEL OF FORTUNE",
     "file": [
-      "Wheel of Fortune.jpg"
+      "Wheel of Fortune.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1321,7 +1607,7 @@
     "name": "正義",
     "en": "JUSTICE",
     "file": [
-      "Justice.jpg"
+      "Justice.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1366,7 +1652,7 @@
     "name": "吊るされた男",
     "en": "THE HANGED MAN",
     "file": [
-      "The Hanged Man.jpg"
+      "The Hanged Man.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1411,7 +1697,7 @@
     "name": "死",
     "en": "DEATH",
     "file": [
-      "Death.jpg"
+      "Death.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1456,7 +1742,7 @@
     "name": "節制",
     "en": "TEMPERANCE",
     "file": [
-      "Temperance.jpg"
+      "Temperance.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1501,7 +1787,7 @@
     "name": "悪魔",
     "en": "THE DEVIL",
     "file": [
-      "The Devil.jpg"
+      "The Devil.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1546,7 +1832,7 @@
     "name": "塔",
     "en": "THE TOWER",
     "file": [
-      "The Tower.jpg"
+      "The Tower.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1591,7 +1877,7 @@
     "name": "星",
     "en": "THE STAR",
     "file": [
-      "The Star.jpg"
+      "The Star.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1636,7 +1922,7 @@
     "name": "月",
     "en": "THE MOON",
     "file": [
-      "The Moon.jpg"
+      "The Moon.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1681,7 +1967,7 @@
     "name": "太陽",
     "en": "THE SUN",
     "file": [
-      "The Sun.jpg"
+      "The Sun.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1726,7 +2012,7 @@
     "name": "審判",
     "en": "JUDGEMENT",
     "file": [
-      "Judgement.jpg"
+      "Judgement.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1771,7 +2057,7 @@
     "name": "世界",
     "en": "THE WORLD",
     "file": [
-      "The World.jpg"
+      "The World.webp"
     ],
     "arcana": "大アルカナ",
     "keywords": [
@@ -1816,7 +2102,7 @@
     "name": "ワンドのA",
     "en": "ACE OF WANDS",
     "file": [
-      "Ace of Wands.jpg"
+      "Ace of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -1864,7 +2150,7 @@
     "name": "ワンドの2",
     "en": "TWO OF WANDS",
     "file": [
-      "Two of Wands.jpg"
+      "Two of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -1912,7 +2198,7 @@
     "name": "ワンドの3",
     "en": "THREE OF WANDS",
     "file": [
-      "Three of Wands.jpg"
+      "Three of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -1960,7 +2246,7 @@
     "name": "ワンドの4",
     "en": "FOUR OF WANDS",
     "file": [
-      "Four of Wands.jpg"
+      "Four of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2008,7 +2294,7 @@
     "name": "ワンドの5",
     "en": "FIVE OF WANDS",
     "file": [
-      "Five of Wands.jpg"
+      "Five of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2056,7 +2342,7 @@
     "name": "ワンドの6",
     "en": "SIX OF WANDS",
     "file": [
-      "Six of Wands.jpg"
+      "Six of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2104,7 +2390,7 @@
     "name": "ワンドの7",
     "en": "SEVEN OF WANDS",
     "file": [
-      "Seven of Wands.jpg"
+      "Seven of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2152,7 +2438,7 @@
     "name": "ワンドの8",
     "en": "EIGHT OF WANDS",
     "file": [
-      "Eight of Wands.jpg"
+      "Eight of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2200,7 +2486,7 @@
     "name": "ワンドの9",
     "en": "NINE OF WANDS",
     "file": [
-      "Nine of Wands.jpg"
+      "Nine of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2248,7 +2534,7 @@
     "name": "ワンドの10",
     "en": "TEN OF WANDS",
     "file": [
-      "Ten of Wands.jpg"
+      "Ten of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2296,7 +2582,7 @@
     "name": "ワンドのペイジ",
     "en": "PAGE OF WANDS",
     "file": [
-      "Page of Wands.jpg"
+      "Page of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2344,7 +2630,7 @@
     "name": "ワンドのナイト",
     "en": "KNIGHT OF WANDS",
     "file": [
-      "Knight of Wands.jpg"
+      "Knight of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2392,7 +2678,7 @@
     "name": "ワンドのクイーン",
     "en": "QUEEN OF WANDS",
     "file": [
-      "Queen of Wands.jpg"
+      "Queen of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2440,7 +2726,7 @@
     "name": "ワンドのキング",
     "en": "KING OF WANDS",
     "file": [
-      "King of Wands.jpg"
+      "King of Wands.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ワンド",
@@ -2488,7 +2774,7 @@
     "name": "カップのA",
     "en": "ACE OF CUPS",
     "file": [
-      "Ace of Cups.jpg"
+      "Ace of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2536,7 +2822,7 @@
     "name": "カップの2",
     "en": "TWO OF CUPS",
     "file": [
-      "Two of Cups.jpg"
+      "Two of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2584,7 +2870,7 @@
     "name": "カップの3",
     "en": "THREE OF CUPS",
     "file": [
-      "Three of Cups.jpg"
+      "Three of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2632,7 +2918,7 @@
     "name": "カップの4",
     "en": "FOUR OF CUPS",
     "file": [
-      "Four of Cups.jpg"
+      "Four of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2680,7 +2966,7 @@
     "name": "カップの5",
     "en": "FIVE OF CUPS",
     "file": [
-      "Five of Cups.jpg"
+      "Five of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2728,7 +3014,7 @@
     "name": "カップの6",
     "en": "SIX OF CUPS",
     "file": [
-      "Six of Cups.jpg"
+      "Six of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2776,7 +3062,7 @@
     "name": "カップの7",
     "en": "SEVEN OF CUPS",
     "file": [
-      "Seven of Cups.jpg"
+      "Seven of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2824,7 +3110,7 @@
     "name": "カップの8",
     "en": "EIGHT OF CUPS",
     "file": [
-      "Eight of Cups.jpg"
+      "Eight of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2872,7 +3158,7 @@
     "name": "カップの9",
     "en": "NINE OF CUPS",
     "file": [
-      "Nine of Cups.jpg"
+      "Nine of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2920,7 +3206,7 @@
     "name": "カップの10",
     "en": "TEN OF CUPS",
     "file": [
-      "Ten of Cups.jpg"
+      "Ten of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -2968,7 +3254,7 @@
     "name": "カップのペイジ",
     "en": "PAGE OF CUPS",
     "file": [
-      "Page of Cups.jpg"
+      "Page of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -3016,7 +3302,7 @@
     "name": "カップのナイト",
     "en": "KNIGHT OF CUPS",
     "file": [
-      "Knight of Cups.jpg"
+      "Knight of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -3064,7 +3350,7 @@
     "name": "カップのクイーン",
     "en": "QUEEN OF CUPS",
     "file": [
-      "Queen of Cups.jpg"
+      "Queen of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -3112,7 +3398,7 @@
     "name": "カップのキング",
     "en": "KING OF CUPS",
     "file": [
-      "King of Cups.jpg"
+      "King of Cups.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "カップ",
@@ -3160,7 +3446,7 @@
     "name": "ソードのA",
     "en": "ACE OF SWORDS",
     "file": [
-      "Ace of Swords.jpg"
+      "Ace of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3208,7 +3494,7 @@
     "name": "ソードの2",
     "en": "TWO OF SWORDS",
     "file": [
-      "Two of Swords.jpg"
+      "Two of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3256,7 +3542,7 @@
     "name": "ソードの3",
     "en": "THREE OF SWORDS",
     "file": [
-      "Three of Swords.jpg"
+      "Three of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3304,7 +3590,7 @@
     "name": "ソードの4",
     "en": "FOUR OF SWORDS",
     "file": [
-      "Four of Swords.jpg"
+      "Four of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3352,7 +3638,7 @@
     "name": "ソードの5",
     "en": "FIVE OF SWORDS",
     "file": [
-      "Five of Swords.jpg"
+      "Five of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3400,7 +3686,7 @@
     "name": "ソードの6",
     "en": "SIX OF SWORDS",
     "file": [
-      "Six of Swords.jpg"
+      "Six of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3448,7 +3734,7 @@
     "name": "ソードの7",
     "en": "SEVEN OF SWORDS",
     "file": [
-      "Seven of Swords.jpg"
+      "Seven of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3496,7 +3782,7 @@
     "name": "ソードの8",
     "en": "EIGHT OF SWORDS",
     "file": [
-      "Eight of Swords.jpg"
+      "Eight of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3544,7 +3830,7 @@
     "name": "ソードの9",
     "en": "NINE OF SWORDS",
     "file": [
-      "Nine of Swords.jpg"
+      "Nine of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3592,7 +3878,7 @@
     "name": "ソードの10",
     "en": "TEN OF SWORDS",
     "file": [
-      "Ten of Swords.jpg"
+      "Ten of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3640,7 +3926,7 @@
     "name": "ソードのペイジ",
     "en": "PAGE OF SWORDS",
     "file": [
-      "Page of Swords.jpg"
+      "Page of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3688,7 +3974,7 @@
     "name": "ソードのナイト",
     "en": "KNIGHT OF SWORDS",
     "file": [
-      "Knight of Swords.jpg"
+      "Knight of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3736,7 +4022,7 @@
     "name": "ソードのクイーン",
     "en": "QUEEN OF SWORDS",
     "file": [
-      "Queen of Swords.jpg"
+      "Queen of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3784,7 +4070,7 @@
     "name": "ソードのキング",
     "en": "KING OF SWORDS",
     "file": [
-      "King of Swords.jpg"
+      "King of Swords.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ソード",
@@ -3832,7 +4118,7 @@
     "name": "ペンタクルのA",
     "en": "ACE OF PENTACLES",
     "file": [
-      "Ace of Pentacles.jpg"
+      "Ace of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -3880,7 +4166,7 @@
     "name": "ペンタクルの2",
     "en": "TWO OF PENTACLES",
     "file": [
-      "Two of Pentacles.jpg"
+      "Two of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -3928,7 +4214,7 @@
     "name": "ペンタクルの3",
     "en": "THREE OF PENTACLES",
     "file": [
-      "Three of Pentacles.jpg"
+      "Three of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -3976,7 +4262,7 @@
     "name": "ペンタクルの4",
     "en": "FOUR OF PENTACLES",
     "file": [
-      "Four of Pentacles.jpg"
+      "Four of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4024,7 +4310,7 @@
     "name": "ペンタクルの5",
     "en": "FIVE OF PENTACLES",
     "file": [
-      "Five of Pentacles.jpg"
+      "Five of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4072,7 +4358,7 @@
     "name": "ペンタクルの6",
     "en": "SIX OF PENTACLES",
     "file": [
-      "Six of Pentacles.jpg"
+      "Six of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4120,7 +4406,7 @@
     "name": "ペンタクルの7",
     "en": "SEVEN OF PENTACLES",
     "file": [
-      "Seven of Pentacles.jpg"
+      "Seven of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4168,7 +4454,7 @@
     "name": "ペンタクルの8",
     "en": "EIGHT OF PENTACLES",
     "file": [
-      "Eight of Pentacles.jpg"
+      "Eight of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4216,7 +4502,7 @@
     "name": "ペンタクルの9",
     "en": "NINE OF PENTACLES",
     "file": [
-      "Nine of Pentacles.jpg"
+      "Nine of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4264,7 +4550,7 @@
     "name": "ペンタクルの10",
     "en": "TEN OF PENTACLES",
     "file": [
-      "Ten of Pentacles.jpg"
+      "Ten of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4312,7 +4598,7 @@
     "name": "ペンタクルのペイジ",
     "en": "PAGE OF PENTACLES",
     "file": [
-      "Page of Pentacles.jpg"
+      "Page of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4360,7 +4646,7 @@
     "name": "ペンタクルのナイト",
     "en": "KNIGHT OF PENTACLES",
     "file": [
-      "Knight of Pentacles.jpg"
+      "Knight of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4408,7 +4694,7 @@
     "name": "ペンタクルのクイーン",
     "en": "QUEEN OF PENTACLES",
     "file": [
-      "Queen of Pentacles.jpg"
+      "Queen of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4456,7 +4742,7 @@
     "name": "ペンタクルのキング",
     "en": "KING OF PENTACLES",
     "file": [
-      "King of Pentacles.jpg"
+      "King of Pentacles.webp"
     ],
     "arcana": "小アルカナ",
     "suit": "ペンタクル",
@@ -4525,13 +4811,42 @@
       'ギャンブル': { ja: 'ギャンブル', en: 'Luck & Risk' }
     };
 
+    const CATEGORY_META = {
+      '恋愛': { jaCaption: '気持ちと距離', enCaption: 'Feelings & connection' },
+      '仕事': { jaCaption: '選択と流れ', enCaption: 'Direction & choices' },
+      '健康': { jaCaption: '心身のバランス', enCaption: 'Well-being & balance' },
+      '家族': { jaCaption: '関係と安心', enCaption: 'Home & understanding' },
+      '人間関係': { jaCaption: '境界線と信頼', enCaption: 'Boundaries & trust' },
+      'ギャンブル': { jaCaption: '判断と引き際', enCaption: 'Judgment & limits' }
+    };
+
+    const CATEGORY_SAFETY = {
+      default: {
+        ja: 'カードが示す内容は、未来や結果を保証するものではありません。ご自身の判断を大切にしてください。',
+        en: 'The cards do not guarantee future events or outcomes. Keep your own judgment at the center.'
+      },
+      '健康': {
+        ja: 'このメッセージは医療上の診断や治療に代わるものではありません。体調に不安がある場合は医療機関や専門家へご相談ください。',
+        en: 'This message is not a medical diagnosis or treatment. Consult a qualified medical professional if you have health concerns.'
+      },
+      'ギャンブル': {
+        ja: 'カードは勝敗や利益を保証しません。使う金額と時間、撤退ラインを事前に決め、生活に影響する利用は避けてください。',
+        en: 'The cards do not guarantee wins or profit. Set money, time, and stopping limits in advance, and never risk essential funds.'
+      }
+    };
+
     const UI_TEXT = {
       ja: {
-        pageTitle: 'エブリデイクイックタロット',
+        pageTitle: 'エブリデイ クイックタロット｜無料・登録不要の3枚引き',
+        metaDescription: '恋愛・仕事・健康など、気になるテーマを選び、78枚のカードから現在・課題・助言の3枚を受け取れます。無料・登録不要です。',
         eyebrow: '',
         titleMain: 'エブリデイ',
         titleSub: 'クイックタロット',
         lead: '恋愛や健康など、あなたが気になっている事柄を78枚のタロットカードを使ってアドバイスいたします',
+        instruction: '心の中で質問を一つ思い浮かべ、気になるテーマを選んでください。3枚のカードが、現在・課題・助言を示します。',
+        trustFree: '無料',
+        trustNoRegister: '登録不要',
+        trustOneMinute: '約1分',
         soundOn: '音楽：ON',
         soundOff: '音楽：OFF',
         langButton: 'English',
@@ -4554,14 +4869,27 @@
         stageSpread: '三枚がそろい、ひとつの流れを結びます。',
         stageOracle: '三枚が示す、今のあなたへの言葉です。',
         supportKicker: 'SUPPORT',
-        supportText: 'このサイトが気に入ったら、Ko-fiで制作を応援できます。'
+        supportText: 'このサイトが気に入ったら、Ko-fiで制作を応援できます。',
+        resultToolsTitle: '結果を保存・共有',
+        saveImage: '画像で保存',
+        share: 'シェア',
+        copyLink: 'URLをコピー',
+        saved: '画像を保存しました。',
+        shared: '共有画面を開きました。',
+        copied: 'URLをコピーしました。',
+        shareFailed: '共有できませんでした。画像保存をお試しください。'
       },
       en: {
-        pageTitle: 'Everyday Quick Tarot',
+        pageTitle: 'Everyday Quick Tarot | Free Three-Card Guidance',
+        metaDescription: 'Choose a theme and receive three cards for Present, Challenge, and Guidance from a full 78-card deck. Free and no registration required.',
         eyebrow: '',
         titleMain: 'Everyday',
         titleSub: 'Quick Tarot',
-        lead: 'Receive guidance on love, health, and other matters on your mind through a 78-card tarot reading.',
+        lead: 'Receive guidance on love, health, and other matters on your mind through a full 78-card tarot deck.',
+        instruction: 'Hold one question in mind, then choose the theme closest to it. Three cards will show Present, Challenge, and Guidance.',
+        trustFree: 'Free',
+        trustNoRegister: 'No registration',
+        trustOneMinute: 'About 1 minute',
         soundOn: 'Music: ON',
         soundOff: 'Music: OFF',
         langButton: '日本語',
@@ -4584,7 +4912,15 @@
         stageSpread: 'The three cards have gathered into one flow.',
         stageOracle: 'Here is the message shown by your three cards.',
         supportKicker: 'SUPPORT',
-        supportText: 'If you enjoyed this reading, you can support the site on Ko-fi.'
+        supportText: 'If you enjoyed this reading, you can support the site on Ko-fi.',
+        resultToolsTitle: 'Save or share your result',
+        saveImage: 'Save image',
+        share: 'Share',
+        copyLink: 'Copy URL',
+        saved: 'The image has been saved.',
+        shared: 'The share sheet has opened.',
+        copied: 'The URL has been copied.',
+        shareFailed: 'Sharing was not available. Please try saving the image.'
       }
     };
 
@@ -4607,12 +4943,19 @@
     const imageDebug = document.getElementById('image-debug');
     const soundToggle = document.getElementById('sound-toggle');
     const langToggle = document.getElementById('lang-toggle');
+    const categoryGrid = document.getElementById('category-grid');
+    const categorySafetyNote = document.getElementById('category-safety-note');
+    const saveImageBtn = document.getElementById('save-image-btn');
+    const shareBtn = document.getElementById('share-btn');
+    const copyLinkBtn = document.getElementById('copy-link-btn');
+    const shareStatus = document.getElementById('share-status');
+    const kofiLink = document.getElementById('kofi-link');
     const bgm = {
       top: document.getElementById('bgm-top'),
       shuffle: document.getElementById('bgm-shuffle'),
       result: document.getElementById('bgm-result')
     };
-    const CARD_BACK_FILE = 'card back.jpg';
+    const CARD_BACK_FILE = 'card back.webp';
     const CATEGORY_COOLDOWN_MS = 24 * 60 * 60 * 1000;
     const CATEGORY_COOLDOWN_KEY = 'tarot_category_cooldowns_v17';
     const LANGUAGE_STORAGE_KEY = 'tarot_language_v18';
@@ -4658,6 +5001,8 @@
     let soundMuted = true;
     let currentBgm = 'top';
     let audioReady = false;
+    let shareImageBlobCache = null;
+    let shareImageBuildPromise = null;
 
     // Android / iPhone / PC のどれでも、ボタンから直接ここへ入る安全な起動口。
     // 一部のスマホでは click が発火しない、または touch と click が二重発火するため、ここで吸収する。
@@ -4678,6 +5023,20 @@
     };
     window.startTarotRitual = window.startTarotRitualSafe;
 
+    function trackEvent(name, params = {}) {
+      try {
+        if (typeof gtag === 'function') gtag('event', name, params);
+      } catch (e) {}
+    }
+
+    function setShareStatus(messageKey) {
+      if (!shareStatus) return;
+      shareStatus.textContent = messageKey ? t(messageKey) : '';
+      if (messageKey) window.setTimeout(() => {
+        if (shareStatus.textContent === t(messageKey)) shareStatus.textContent = '';
+      }, 3600);
+    }
+
     function isMobileView() {
       if (window.matchMedia) return window.matchMedia('(max-width: 700px)').matches;
       return (window.innerWidth || document.documentElement.clientWidth || 360) <= 700;
@@ -4697,6 +5056,9 @@
     function initTarotApp() {
       if (initialized) return;
       initialized = true;
+      setupCategoryGrid();
+      setupShareActions();
+      setupOutboundTracking();
       applyLanguage();
       createDeckVisual();
       setupAudio();
@@ -4711,7 +5073,10 @@
         startBtn.addEventListener(type, startHandler, false);
       });
       againBtn.addEventListener('click', resetRitual, false);
-      categorySelect.addEventListener('change', updateCategoryCooldownUI, false);
+      categorySelect.addEventListener('change', function() {
+        updateCategoryCooldownUI();
+        trackEvent('category_select', { category: categorySelect.value, language: currentLang });
+      }, false);
       if (langToggle) {
         langToggle.addEventListener('click', function(event) {
           event.preventDefault();
@@ -4748,6 +5113,7 @@
 
     function setLanguage(lang) {
       currentLang = lang === 'en' ? 'en' : 'ja';
+      trackEvent('language_change', { language: currentLang });
       try { localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLang); } catch (e) {}
       applyLanguage();
     }
@@ -4755,12 +5121,30 @@
     function applyLanguage() {
       document.documentElement.lang = currentLang === 'en' ? 'en' : 'ja';
       document.title = t('pageTitle');
+      const metaDescription = document.getElementById('meta-description');
+      const ogTitle = document.getElementById('og-title');
+      const ogDescription = document.getElementById('og-description');
+      const ogLocale = document.getElementById('og-locale');
+      const twitterTitle = document.getElementById('twitter-title');
+      const twitterDescription = document.getElementById('twitter-description');
+      if (metaDescription) metaDescription.setAttribute('content', t('metaDescription'));
+      if (ogTitle) ogTitle.setAttribute('content', t('pageTitle'));
+      if (ogDescription) ogDescription.setAttribute('content', t('metaDescription'));
+      if (ogLocale) ogLocale.setAttribute('content', currentLang === 'en' ? 'en_US' : 'ja_JP');
+      if (twitterTitle) twitterTitle.setAttribute('content', t('pageTitle'));
+      if (twitterDescription) twitterDescription.setAttribute('content', t('metaDescription'));
 
       const eyebrow = document.querySelector('.eyebrow');
       const titleMain = document.querySelector('.title-line-main');
       const titleSub = document.querySelector('.title-line-sub');
       const lead = document.querySelector('.lead');
       const categoryLabel = document.querySelector('label[for="category"]');
+      const categoryLabelVisible = document.getElementById('category-label');
+      const heroInstruction = document.getElementById('hero-instruction');
+      const trustFree = document.getElementById('trust-free');
+      const trustNoRegister = document.getElementById('trust-no-register');
+      const trustOneMinute = document.getElementById('trust-one-minute');
+      const resultToolsTitle = document.getElementById('result-tools-title');
       const oracleHeading = document.querySelector('#oracle-box h2');
       const supportKicker = document.getElementById('support-kicker');
       const supportText = document.getElementById('support-text');
@@ -4772,17 +5156,32 @@
       if (titleMain) titleMain.textContent = t('titleMain');
       if (titleSub) titleSub.textContent = t('titleSub');
       if (lead) lead.textContent = t('lead');
+      if (heroInstruction) heroInstruction.textContent = t('instruction');
+      if (trustFree) trustFree.textContent = t('trustFree');
+      if (trustNoRegister) trustNoRegister.textContent = t('trustNoRegister');
+      if (trustOneMinute) trustOneMinute.textContent = t('trustOneMinute');
       if (categoryLabel) categoryLabel.textContent = t('categoryLabel');
+      if (categoryLabelVisible) categoryLabelVisible.textContent = t('categoryLabel');
+      if (categorySelect) categorySelect.setAttribute('aria-label', t('categoryLabel'));
       if (againBtn) againBtn.textContent = t('again');
       if (oracleHeading) oracleHeading.textContent = t('oracleTitle');
       if (supportKicker) supportKicker.textContent = t('supportKicker');
       if (supportText) supportText.textContent = t('supportText');
+      if (resultToolsTitle) resultToolsTitle.textContent = t('resultToolsTitle');
+      if (saveImageBtn) saveImageBtn.textContent = t('saveImage');
+      if (shareBtn) shareBtn.textContent = t('share');
+      if (copyLinkBtn) copyLinkBtn.textContent = t('copyLink');
+      document.querySelectorAll('[data-lang-block]').forEach(block => {
+        block.hidden = block.getAttribute('data-lang-block') !== currentLang;
+      });
       if (pileLeft) pileLeft.textContent = t('pileLeft');
       if (pileCenter) pileCenter.textContent = t('pileCenter');
       if (pileRight) pileRight.textContent = t('pileRight');
       if (langToggle) langToggle.textContent = t('langButton');
 
       updateSoundButton();
+      updateCategoryButtons();
+      updateCategorySafetyNote();
       updateCategoryCooldownUI();
 
       if (!ritualRunning && resultArea && resultArea.style.display !== 'block') {
@@ -4794,8 +5193,48 @@
         if (oracleBox && oracleBox.classList.contains('show')) {
           oracleText.textContent = makeOracle(selected, category);
           renderMerchCTA(selected);
+          prepareShareImage();
         }
       }
+    }
+
+    function setupCategoryGrid() {
+      if (!categoryGrid) return;
+      categoryGrid.addEventListener('click', function(event) {
+        const button = event.target.closest('.category-option');
+        if (!button || button.disabled || ritualRunning) return;
+        const category = button.dataset.category;
+        if (!category) return;
+        categorySelect.value = category;
+        categorySelect.dispatchEvent(new Event('change', { bubbles: true }));
+      }, false);
+    }
+
+    function updateCategoryButtons() {
+      if (!categoryGrid || !categorySelect) return;
+      categoryGrid.querySelectorAll('.category-option').forEach(button => {
+        const category = button.dataset.category;
+        const remaining = getCategoryCooldownRemaining(category);
+        const selectedNow = categorySelect.value === category;
+        const meta = CATEGORY_META[category] || {};
+        const nameEl = button.querySelector('.category-name');
+        const captionEl = button.querySelector('.category-caption');
+        if (nameEl) nameEl.textContent = categoryDisplayName(category);
+        if (captionEl) captionEl.textContent = currentLang === 'en' ? (meta.enCaption || '') : (meta.jaCaption || '');
+        button.classList.toggle('is-selected', selectedNow);
+        button.classList.toggle('is-locked', remaining > 0);
+        button.setAttribute('aria-checked', selectedNow ? 'true' : 'false');
+        button.disabled = ritualRunning || remaining > 0;
+        button.setAttribute('aria-label', remaining > 0
+          ? `${categoryDisplayName(category)} ${formatCooldownRemaining(remaining)}`
+          : `${categoryDisplayName(category)} ${currentLang === 'en' ? (meta.enCaption || '') : (meta.jaCaption || '')}`);
+      });
+    }
+
+    function updateCategorySafetyNote() {
+      if (!categorySafetyNote || !categorySelect) return;
+      const item = CATEGORY_SAFETY[categorySelect.value] || CATEGORY_SAFETY.default;
+      categorySafetyNote.textContent = item[currentLang] || item.ja;
     }
 
     function categoryDisplayName(category) {
@@ -4944,6 +5383,7 @@
         soundToggle.addEventListener('click', function(event) {
           event.preventDefault();
           soundMuted = !soundMuted;
+          trackEvent('sound_toggle', { enabled: !soundMuted, language: currentLang });
           updateSoundButton();
           if (soundMuted) {
             stopAllBGM();
@@ -5019,17 +5459,20 @@
       const selectedCategory = categorySelect.value;
       const remaining = getCategoryCooldownRemaining(selectedCategory);
       if (remaining > 0) {
+        trackEvent('cooldown_blocked', { category: selectedCategory, remaining_minutes: Math.ceil(remaining / 60000) });
         updateCategoryCooldownUI();
         title.textContent = cooldownBlockedMessage(selectedCategory, remaining);
         return;
       }
       ritualRunning = true;
+      trackEvent('reading_start', { category: selectedCategory, language: currentLang });
       switchBGM('shuffle', true);
       clearRitualTimers();
       document.body.classList.add('is-running');
       startBtn.disabled = true;
       startBtn.textContent = t('shuffling');
       categorySelect.disabled = true;
+      updateCategoryButtons();
       resultArea.style.display = 'none';
       clearResultPresentation();
       if (imageDebug) imageDebug.style.display = 'none';
@@ -5102,6 +5545,11 @@
       stage.querySelectorAll('.drawn-card').forEach(el => el.remove());
       const category = categorySelect.value;
       recordCategoryReading(category);
+      trackEvent('reading_complete', {
+        category,
+        language: currentLang,
+        cards: selected.map(entry => `${entry.card.id}-${entry.reversed ? 'R' : 'U'}`).join(',')
+      });
       clearResultPresentation();
       resultArea.style.display = 'block';
       playResultSequence(selected, category);
@@ -5225,6 +5673,8 @@
         startBtn.disabled = remaining > 0;
         startBtn.textContent = remaining > 0 ? t('waiting') : t('start');
       }
+      updateCategoryButtons();
+      updateCategorySafetyNote();
     }
 
     function pickThreeCards() {
@@ -5247,6 +5697,8 @@
       }
       if (oracleBox) oracleBox.classList.remove('show');
       if (oracleText) oracleText.textContent = '';
+      shareImageBlobCache = null;
+      shareImageBuildPromise = null;
       renderMerchCTA([]);
     }
 
@@ -5279,6 +5731,7 @@
         oracleText.textContent = makeOracle(entries, category);
         renderMerchCTA(entries);
         oracleBox.classList.add('show');
+        prepareShareImage();
       }, oracleDelay);
     }
 
@@ -5368,6 +5821,229 @@
       }
     }
 
+    function setupShareActions() {
+      if (saveImageBtn) saveImageBtn.addEventListener('click', async function() {
+        try {
+          const blob = shareImageBlobCache || await getShareImageBlob();
+          downloadBlob(blob, `everyday-quick-tarot-${Date.now()}.png`);
+          trackEvent('share', { method: 'save_image', content_type: 'result', item_id: categorySelect.value });
+          setShareStatus('saved');
+        } catch (e) {
+          setShareStatus('shareFailed');
+        }
+      }, false);
+      if (shareBtn) shareBtn.addEventListener('click', async function() {
+        try {
+          const blob = shareImageBlobCache || await getShareImageBlob();
+          const file = new File([blob], 'everyday-quick-tarot.png', { type: 'image/png' });
+          const shareData = {
+            title: t('pageTitle'),
+            text: currentLang === 'en' ? 'My three-card message from Everyday Quick Tarot.' : 'エブリデイ クイックタロットで受け取った3枚のメッセージです。',
+            url: 'https://yo-create-wr.github.io/quick-tarot/'
+          };
+          if (navigator.canShare && navigator.canShare({ files: [file] })) shareData.files = [file];
+          if (navigator.share) {
+            await navigator.share(shareData);
+            trackEvent('share', { method: shareData.files ? 'web_share_image' : 'web_share_url', content_type: 'result', item_id: categorySelect.value });
+            setShareStatus('shared');
+          } else {
+            downloadBlob(blob, `everyday-quick-tarot-${Date.now()}.png`);
+            trackEvent('share', { method: 'share_fallback_download', content_type: 'result', item_id: categorySelect.value });
+            setShareStatus('saved');
+          }
+        } catch (e) {
+          if (e && e.name === 'AbortError') return;
+          setShareStatus('shareFailed');
+        }
+      }, false);
+      if (copyLinkBtn) copyLinkBtn.addEventListener('click', async function() {
+        try {
+          await copyText('https://yo-create-wr.github.io/quick-tarot/');
+          trackEvent('share', { method: 'copy_link', content_type: 'site', item_id: categorySelect.value });
+          setShareStatus('copied');
+        } catch (e) {
+          setShareStatus('shareFailed');
+        }
+      }, false);
+    }
+
+    function setupOutboundTracking() {
+      if (kofiLink) kofiLink.addEventListener('click', function() {
+        trackEvent('kofi_click', { destination: kofiLink.href, language: currentLang });
+      }, false);
+      const githubContact = document.getElementById('github-contact');
+      if (githubContact) githubContact.addEventListener('click', function() {
+        trackEvent('contact_click', { method: 'github' });
+      }, false);
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand('copy');
+      area.remove();
+      if (!ok) throw new Error('copy failed');
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+    }
+
+    function loadShareImage(file) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+        image.crossOrigin = 'anonymous';
+        image.onload = () => resolve(image);
+        image.onerror = reject;
+        image.src = encodeURI(file);
+      });
+    }
+
+    function canvasRoundedRect(ctx, x, y, w, h, radius) {
+      const r = Math.min(radius, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 4) {
+      const chars = Array.from(String(text || ''));
+      let line = '';
+      let lines = [];
+      for (const char of chars) {
+        const test = line + char;
+        if (ctx.measureText(test).width > maxWidth && line) {
+          lines.push(line);
+          line = char;
+          if (lines.length >= maxLines) break;
+        } else line = test;
+      }
+      if (lines.length < maxLines && line) lines.push(line);
+      lines.slice(0, maxLines).forEach((item, index) => ctx.fillText(item, x, y + index * lineHeight));
+    }
+
+    function prepareShareImage() {
+      if (!selected.length) return;
+      shareImageBlobCache = null;
+      shareImageBuildPromise = buildShareImageBlob()
+        .then(blob => {
+          shareImageBlobCache = blob;
+          return blob;
+        })
+        .catch(() => null);
+    }
+
+    async function getShareImageBlob() {
+      if (shareImageBlobCache) return shareImageBlobCache;
+      if (shareImageBuildPromise) {
+        const cached = await shareImageBuildPromise;
+        if (cached) return cached;
+      }
+      const blob = await buildShareImageBlob();
+      shareImageBlobCache = blob;
+      return blob;
+    }
+
+    async function buildShareImageBlob() {
+      if (!selected.length) throw new Error('no result');
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 1350;
+      const ctx = canvas.getContext('2d');
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, '#17102f');
+      gradient.addColorStop(.55, '#090617');
+      gradient.addColorStop(1, '#020106');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const glow = ctx.createRadialGradient(540, 120, 10, 540, 170, 520);
+      glow.addColorStop(0, 'rgba(217,180,95,.25)');
+      glow.addColorStop(1, 'rgba(217,180,95,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, canvas.width, 720);
+
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fff1b9';
+      ctx.font = '700 52px serif';
+      ctx.fillText(currentLang === 'en' ? 'EVERYDAY QUICK TAROT' : 'エブリデイ クイックタロット', 540, 82);
+      ctx.fillStyle = '#cfc5e8';
+      ctx.font = '30px serif';
+      ctx.fillText(categoryDisplayName(categorySelect.value), 540, 132);
+
+      const cardW = 280;
+      const cardH = Math.round(cardW * 1.61);
+      const gap = 35;
+      const startX = (1080 - (cardW * 3 + gap * 2)) / 2;
+      const y = 190;
+      const images = await Promise.all(selected.map(entry => loadShareImage((entry.card.file || [])[0])));
+      selected.forEach((entry, index) => {
+        const x = startX + index * (cardW + gap);
+        ctx.save();
+        canvasRoundedRect(ctx, x - 5, y - 5, cardW + 10, cardH + 10, 18);
+        ctx.fillStyle = '#d9b45f';
+        ctx.fill();
+        canvasRoundedRect(ctx, x, y, cardW, cardH, 14);
+        ctx.clip();
+        if (entry.reversed) {
+          ctx.translate(x + cardW / 2, y + cardH / 2);
+          ctx.rotate(Math.PI);
+          ctx.drawImage(images[index], -cardW / 2, -cardH / 2, cardW, cardH);
+        } else ctx.drawImage(images[index], x, y, cardW, cardH);
+        ctx.restore();
+
+        ctx.textAlign = 'center';
+        ctx.fillStyle = '#fff1b9';
+        ctx.font = '700 24px serif';
+        ctx.fillText(slotLabel(slots[index]), x + cardW / 2, y + cardH + 42);
+        ctx.fillStyle = '#fff8e9';
+        ctx.font = '700 25px serif';
+        ctx.fillText(cardDisplayName(entry.card), x + cardW / 2, y + cardH + 78);
+        ctx.fillStyle = '#cfc5e8';
+        ctx.font = '21px serif';
+        ctx.fillText(orientationText(entry.reversed), x + cardW / 2, y + cardH + 108);
+      });
+
+      const boxY = 835;
+      canvasRoundedRect(ctx, 62, boxY, 956, 360, 30);
+      ctx.fillStyle = 'rgba(255,255,255,.055)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(217,180,95,.42)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fillStyle = '#fff1b9';
+      ctx.font = '700 30px serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(currentLang === 'en' ? 'MESSAGE' : '3枚からのメッセージ', 540, boxY + 58);
+      ctx.fillStyle = '#fff8e9';
+      ctx.font = '30px serif';
+      const summary = currentLang === 'en'
+        ? englishSummarySentence(selected[0], selected[1], selected[2], categorySelect.value)
+        : makeSummarySentence(selected[0], selected[1], selected[2], categorySelect.value);
+      wrapCanvasText(ctx, summary, 540, boxY + 116, 830, 48, 5);
+      ctx.fillStyle = '#cfc5e8';
+      ctx.font = '22px sans-serif';
+      ctx.fillText('yo-create-wr.github.io/quick-tarot/', 540, 1285);
+
+      return new Promise((resolve, reject) => canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error('canvas export failed')), 'image/png'));
+    }
+
     function createReadingCard(entry, slot, category, index, mode = 'spread') {
       const { card, reversed } = entry;
       const wrapper = document.createElement('article');
@@ -5408,7 +6084,7 @@
           imageBox.classList.add('no-image');
           if (imageDebug) {
             imageDebug.style.display = 'block';
-            imageDebug.innerHTML = '<span class="debug-pill">画像が見つからないカードがあります。例：' + escapeHTML((tried[0] || 'The Fool.jpg')) + ' をHTMLと同じフォルダに置いてください。裏面は card back.jpg です。</span>';
+            imageDebug.innerHTML = '<span class="debug-pill">画像が見つからないカードがあります。例：' + escapeHTML((tried[0] || 'The Fool.webp')) + ' をHTMLと同じフォルダに置いてください。裏面は card back.jpg です。</span>';
           }
           return;
         }
@@ -5426,7 +6102,7 @@
 
     function buildImageCandidates(files) {
       const sourceFiles = Array.isArray(files) ? files : [files];
-      const exts = ['.jpg', '.jpeg', '.JPG', '.JPEG'];
+      const exts = ['.webp', '.jpeg', '.JPG', '.JPEG'];
       const candidates = [];
       const pushUnique = function(value) {
         if (!value) return;

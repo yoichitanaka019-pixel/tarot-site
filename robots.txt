@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yo-create-wr.github.io/quick-tarot/sitemap.xml
